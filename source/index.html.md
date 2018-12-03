@@ -25,7 +25,7 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize, use your APIkey in the blank space after 'apikey='in every request you send:
 
 
 ```python
@@ -35,24 +35,24 @@ api = kittn.authorize('meowmeowmeow')
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# With shell, you can just pass the correct header with each request.
+curl -X POST -F "apikey=meowmeowmeow" -F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg" -F "mode=json" -F "facemode=default" -F "facefinder=1" "http://otc.raypack.ai:5000/raypackfacev3" 
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+RAYPACK AI uses API keys to allow access to the API. You can register a trial API key at our [homepage](http://raypack.ai).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+The API expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+"apikey: meowmeowmeow"
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Raypack AI models
+Currently the RAYPACK AI platform offers face detection, food detection and object recognition
 
 ## Get All Kittens
 
