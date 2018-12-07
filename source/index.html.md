@@ -89,7 +89,7 @@ curl -X POST -F "meowmeowmeow"
 This endpoint lets you use FACE AI with your own images.
 
 Our Face AI is very accurate in a broad range of circumstances. One output example would be:
-![alt text](/source/images/logo.png)
+![alt text]('Users/Luca/Documents/Aiso.Lab/slate/source/images/logo.png')
 
 ### HTTP Request
 
@@ -110,7 +110,9 @@ Remember — always use your API-key to validate your request!
 
 ## Object Detection
 
-<img src="/source/images/logo.png" class="lang-specific python">
+```python
+import
+```
 
 ```shell
 curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0" 
