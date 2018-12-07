@@ -1,13 +1,13 @@
 ---
-title: API Reference
+title: RAYPACK API Platform Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://raypack.ai'>Sign Up for a trial API-key</a>
+
 
 includes:
   - errors
@@ -87,6 +87,9 @@ curl -X POST -F "meowmeowmeow"
 ```
 
 This endpoint lets you use FACE AI with your own images.
+
+Our Face AI is very accurate in a broad range of circumstances. One output example would be:
+![alt text](/Users/Luca/Documents/Aiso.Lab/API_Doku/slate/source/images/test_default_grün.jpg)
 
 ### HTTP Request
 
