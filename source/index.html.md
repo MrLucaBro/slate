@@ -71,22 +71,19 @@ curl -X POST -F "meowmeowmeow"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "totalfaces": 1,
+    "time": 1.422919750213623,
+    "faces": [
+        {
+            "xpos": 268,
+            "ypos": 102,
+            "width": 463,
+            "height": 318,
+            "score": 0.9999999957373409
+        }
+    ]
+}
 ```
 
 This endpoint lets you use FACE AI with your own images.
@@ -101,8 +98,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 threshold | 0.9 | Sets the threshold of detection certainty.
 imagef | - | Lets you specify the location of your input file.
-Mode |image | Defines the form of returned output. Can be jpg, json or both(imagejson).
-facemode | - | Lets you determine the level of anonymization in the output. default (none), pixel (blurred), fill (face replaced by colored rectangle) and black (only bounding boxes) 
+Mode |image | Defines the form of returned output. Can be jpg, json .
+facemode | - | Lets you determine the level of anonymization in the output. default (none), pixel (blurred), fill (face replaced by colored rectangle) and black (only bounding boxes) and jsonimage (both image and json)
 
 <aside class="success">
 Remember — always use your API-key to validate your request!
@@ -124,15 +121,25 @@ curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+"name":"Raypack_AI_Filecontainer",
+"version":"1.0",
+"license":"commercial",
+"results":
+	{"stats": 
+		{"modelname":"Raypack_Food",
+		 "modelid":"2",
+		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
+		 "starttime":1544183968616,
+		 "endtime":1544183970545,
+		 "duration":1.929},
+	"tags":
+		[{"name":"pasta","value":"1.00000000"},
+                 {"name":"sauce","value":"1.00000000"},
+		 {"name":"cheese","value":"1.00000000"},{"name":"macaroni","value":"1.00000000"}]}
 }
 ```
 
-This endpoint lets you detect objects on pictures.
+This endpoint lets you detect objects in pictures and videos.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -150,40 +157,4 @@ model | - | Lets you specify if you want to detect objects in general (1) or foo
 lang | de | Language of the output json
 
 
-## Delete a Specific Kitten
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
 
