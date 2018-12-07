@@ -281,7 +281,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <h1 id='raypack-ai-models'>RAYPACK AI models</h1>
 <p>Currently the RAYPACK AI platform offers face detection, food detection and object recognition</p>
 <h2 id='raypack-face-ai'>RAYPACK Face AI</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">...</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=RF00ff22e31"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"meowmeowmeow"</span>
 -F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"imagef=https://cvdazzle.com/assets/img/look5r-md.jpg"</span> 
 -F <span class="s2">"mode=json"</span> -F <span class="s2">"facemode=default"</span> -F <span class="s2">"hex=00ff00"</span> <span class="s2">"http://otc.raypack.ai:5000/raypackfacev3"</span>
 
@@ -332,14 +332,20 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>image</td>
 <td>Defines the form of returned output. Can be jpg, json or both(imagejson).</td>
 </tr>
+<tr>
+<td>facemode</td>
+<td>-</td>
+<td>Lets you determine the level of anonymization in the output. default (none), pixel (blurred), fill (face replaced by colored rectangle) and black (only bounding boxes)</td>
+</tr>
 </tbody></table>
 
 <aside class="success">
 Remember — always use your API-key to validate your request!
 </aside>
 <h2 id='object-detection'>Object Detection</h2><pre class="highlight python tab-python"><code><span class="k">import</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=1.0"</span> 
+-F <span class="s2">"file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"</span>
+-F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -352,21 +358,38 @@ Remember — always use your API-key to validate your request!
   </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This endpoint lets you detect objects on pictures.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="warning">Videos are not supported yet.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p>POST <code>https://apiv3.raypack.ai/recog</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>threshold</td>
+<td>0.9</td>
+<td>Sets the threshold of detection certainty.</td>
+</tr>
+<tr>
+<td>File</td>
+<td>-</td>
+<td>Lets you specify the location of your input file.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Lets you specify if you want to detect objects in general (1) or foods (2).</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>de</td>
+<td>Language of the output json</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
