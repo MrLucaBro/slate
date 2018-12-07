@@ -232,7 +232,7 @@
                     <a href="#raypack-face-ai" class="toc-h2 toc-link" data-title="RAYPACK Face AI">RAYPACK Face AI</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#object-detection" class="toc-h2 toc-link" data-title="Object Detection">Object Detection</a>
                   </li>
                   <li>
                     <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
@@ -306,9 +306,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint lets you use FACE AI.</p>
+<p>This endpoint lets you use FACE AI with your own images.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>http://example.com/api/kittens</code></p>
+<p>POST <code>http://otc.raypack.ai:5000/raypackfacev3</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -318,24 +318,26 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>threshold</td>
+<td>0.9</td>
+<td>Sets the threshold of detection certainty.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>imagef</td>
+<td>-</td>
+<td>Lets you specify the location of your input file.</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>image</td>
+<td>Defines the form of returned output. Can be jpg, json or both(imagejson).</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — always use your API-key to validate your request!
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<h2 id='object-detection'>Object Detection</h2><pre class="highlight python tab-python"><code><span class="k">import</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
