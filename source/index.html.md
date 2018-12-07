@@ -110,9 +110,7 @@ Remember — always use your API-key to validate your request!
 
 ## Object Detection
 
-```python
-import
-```
+<img src="/source/images/logo.png" class="lang-specific python">
 
 ```shell
 curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0" 
