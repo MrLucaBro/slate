@@ -89,30 +89,28 @@ curl -X POST -F "apikey=RF00ff22e31"
 ]
 ```
 
-This endpoint lets you use FACE AI.
+This endpoint lets you use FACE AI with your own images.
 
 ### HTTP Request
 
-`http://example.com/api/kittens`
+POST `http://otc.raypack.ai:5000/raypackfacev3`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+threshold | 0.9 | Sets the threshold of detection certainty.
+imagef | - | Lets you specify the location of your input file.
+Mode |image | Defines the form of returned output. Can be jpg, json or both(imagejson).
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — always use your API-key to validate your request!
 </aside>
 
-## Get a Specific Kitten
+## Object Detection
 
 ```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+import
 ```
 
 ```shell
