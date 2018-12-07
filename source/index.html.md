@@ -89,7 +89,7 @@ curl -X POST -F "meowmeowmeow"
 This endpoint lets you use FACE AI with your own images.
 
 Our Face AI is very accurate in a broad range of circumstances. One output example would be:
-![alt text](/Users/Luca/Documents/Aiso.Lab/API_Doku/slate/source/images/test_default_grün.jpg)
+![alt text](/source/images/test_default_grün.jpg)
 
 ### HTTP Request
 
