@@ -87,7 +87,7 @@ curl -X POST -F "meowmeowmeow"
 ```
 
 > or an image like this:  
-<img src="source/images/test_default_grün.jpg">
+<img src="/images/test_default_grün.jpg">
 
 This endpoint lets you use FACE AI with your own images.
 
