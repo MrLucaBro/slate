@@ -21,11 +21,11 @@ Welcome to the RAYPACK AI Platform! You can use our API to run AI models and rec
 
 We have language bindings mainly in Shell, but we also set up some experimental Python code! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate).
+
 
 # Authentication
 
-> To authorize, use your APIkey in the blank space after 'apikey='in every request you send:
+> To authorize, use your API-key in the blank space after 'apikey='in every request you send:
 
 
 ```python
@@ -36,36 +36,35 @@ api = kittn.authorize('meowmeowmeow')
 
 ```shell
 # With shell, you can just pass the correct header with each request.
-curl -X POST -F "apikey=meowmeowmeow" -F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg" -F "mode=json" -F "facemode=default" -F "facefinder=1" "http://otc.raypack.ai:5000/raypackfacev3" 
+curl -X POST -F "apikey=meowmeowmeow" ... 
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
-RAYPACK AI uses API keys to allow access to the API. You can register a trial API key at our [homepage](http://raypack.ai).
+RAYPACK AI uses API-keys to allow access to the API. You can register for a trial key at our [homepage](http://raypack.ai).
 
-The API expects for the API key to be included in all API requests to the server in a header that looks like the following:
+The API expects for the API-key to be included in all API requests to the server in a header that looks like the following:
 
-"apikey: meowmeowmeow"
+F "apikey: meowmeowmeow"
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Raypack AI models
+# RAYPACK AI models
 Currently the RAYPACK AI platform offers face detection, food detection and object recognition
 
-## Get All Kittens
+## RAYPACK Face AI
 
 ```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+import ...
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl -X POST -F "apikey=RF00ff22e31"
+-F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg" 
+-F "mode=json" -F "facemode=default" -F "hex=00ff00" "http://otc.raypack.ai:5000/raypackfacev3"
+
 ```
 
 
@@ -90,11 +89,11 @@ curl "http://example.com/api/kittens"
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint lets you use FACE AI.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`http://example.com/api/kittens`
 
 ### Query Parameters
 
