@@ -90,6 +90,7 @@ This endpoint lets you use FACE AI with your own images.
 
 Our Face AI is very accurate in a broad range of circumstances. One output example would be:
 ![alt text]('Users/Luca/Documents/Aiso.Lab/slate/source/images/logo.png')
+<img src="/images/logo.png">
 
 ### HTTP Request
 
