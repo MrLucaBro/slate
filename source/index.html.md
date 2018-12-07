@@ -61,7 +61,7 @@ import ...
 ```
 
 ```shell
-curl -X POST -F "apikey=RF00ff22e31"
+curl -X POST -F "meowmeowmeow"
 -F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg" 
 -F "mode=json" -F "facemode=default" -F "hex=00ff00" "http://otc.raypack.ai:5000/raypackfacev3"
 
@@ -102,6 +102,7 @@ Parameter | Default | Description
 threshold | 0.9 | Sets the threshold of detection certainty.
 imagef | - | Lets you specify the location of your input file.
 Mode |image | Defines the form of returned output. Can be jpg, json or both(imagejson).
+facemode | - | Lets you determine the level of anonymization in the output. default (none), pixel (blurred), fill (face replaced by colored rectangle) and black (only bounding boxes) 
 
 <aside class="success">
 Remember — always use your API-key to validate your request!
@@ -114,8 +115,9 @@ import
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0" 
+-F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
+-F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,19 +132,23 @@ curl "http://example.com/api/kittens/2"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint lets you detect objects on pictures.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="warning">Videos are not supported yet.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+POST `https://apiv3.raypack.ai/recog`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | 0.9 | Sets the threshold of detection certainty.
+File | - | Lets you specify the location of your input file.
+model | - | Lets you specify if you want to detect objects in general (1) or foods (2).
+lang | de | Language of the output json
+
 
 ## Delete a Specific Kitten
 
