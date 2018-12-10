@@ -17,7 +17,7 @@ search: true
 
 # Introduction
 
-Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models . We offer read-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded in existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language to access our API is Shell, but we also set up some experimental Python code. You can view code examples in the dark area to the right, and you can switch to the programming language of your choice with the tabs in the top right.
+Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models . We offer ready-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded in existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language to access our API is Shell, but we also set up some experimental Python code. You can view code examples in the dark area to the right, and you can switch to the programming language of your choice with the tabs in the top right.
 
 
 
@@ -78,22 +78,25 @@ curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
 "name":"Raypack_AI_Filecontainer",
 "version":"1.0",
 "license":"commercial",
-"results":
-	{"stats":
-		{"modelname":"Raypack_Food",
-		 "modelid":"2",
-		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-		 "starttime":1544183968616,
-		 "endtime":1544183970545,
-		 "duration":1.929},
-	"tags":
-		[{"name":"pasta","value":"1.00000000"},
-                 {"name":"sauce","value":"1.00000000"},
-		 {"name":"cheese","value":"1.00000000"},{"name":"macaroni","value":"1.00000000"}]}
+"results":{
+    "stats":{
+    "modelname":"Raypack_Food",
+	 "modelid":"2",
+	 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
+	 "starttime":1544183968616,
+	 "endtime":1544183970545,
+	 "duration":1.929},
+	"tags":[
+      {"name":"pasta","value":"1.00000000"},
+      {"name":"sauce","value":"1.00000000"},
+      {"name":"cheese","value":"1.00000000"},
+      {"name":"macaroni","value":"1.00000000"}
+    ]
+  }
 }
 ```
 
-RAYPACK Multi-Object Detection is a ready-to- deploy AI model, that enables simultaneous detection of all kinds of objects. It comes with a large number of pre-trained objects and can be extended to other objects relevant to your business needs. Its highly accurate performance and flexibility make RAYPACK Multi-Object Detection your best choice for almost any camera-based business application.
+RAYPACK Multi-Object Detection is a ready-to-deploy AI model, that enables simultaneous detection of all kinds of objects. It comes with a large number of pre-trained objects and can be extended to other objects relevant to your business needs. Its highly accurate performance and flexibility make RAYPACK Multi-Object Detection your best choice for almost any camera-based business application.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -109,6 +112,24 @@ threshold | 0.9 | Sets the threshold of detection certainty required to return a
 file | - | Lets you specify your input file.
 model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
 lang | de | Language of the output. Can be English (lang=en) or German (lang=de).
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+tags | dict |  Contains Name and confidence of the detected objects (both strings)
+
 
 ## RAYPACK Face AI
 
@@ -166,6 +187,15 @@ facemode | - | Lets you determine the level of anonymization in the output. You 
 Remember — always use your API-key to validate your request!
 </aside>
 
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+totalfaces | integer | Number of detected faces within the image
+time | float | Time spent processing the image
+faces | dict |  Bounding box(es) of the detected face(s) with xpos, ypos, width, height and confidence
+
+
 ## RAYPACK Celebrity detection US
 
 ```python
@@ -195,13 +225,14 @@ curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
 		 "duration":1.929},
 	"tags":
 		[{"name":"pasta","value":"1.00000000"},
-                 {"name":"sauce","value":"1.00000000"},
-		 {"name":"cheese","value":"1.00000000"},{"name":"macaroni","value":"1.00000000"}]}
+     {"name":"sauce","value":"1.00000000"},
+		 {"name":"cheese","value":"1.00000000"},
+     {"name":"macaroni","value":"1.00000000"}]}
 }
 ```
 
 RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
-The model can be expanded with any desired celebrity.
+The model can be expanded with any desired celebrity or common person.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -214,7 +245,7 @@ POST `https://apiv3.raypack.ai/recog`
 Parameter | Default | Description
 --------- | ------- | -----------
 threshold | 0.9 | Sets the threshold of detection certainty.
-File | - | Lets you specify the location of your input file.
+file | - | Lets you specify the location of your input file.
 model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
 lang | de | Language of the output.
 
@@ -247,8 +278,9 @@ curl -X POST -F "apikey=meowmeowmeow" -F "threshold=0.2"
 		 "duration":1.929},
 	"tags":
 		[{"name":"pasta","value":"1.00000000"},
-                 {"name":"sauce","value":"1.00000000"},
-		 {"name":"cheese","value":"1.00000000"},{"name":"macaroni","value":"1.00000000"}]}
+     {"name":"sauce","value":"1.00000000"},
+		 {"name":"cheese","value":"1.00000000"},
+     {"name":"macaroni","value":"1.00000000"}]}
 }
 ```
 
@@ -264,6 +296,6 @@ POST `https://apiv3.raypack.ai/recog`
 Parameter | Default | Description
 --------- | ------- | -----------
 threshold | 0.9 | Sets the threshold of detection certainty.
-File | - | Lets you specify the location of your input file.
+file | - | Lets you specify the location of your input file.
 model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
 lang | de | Language of the output.
