@@ -17,9 +17,7 @@ search: true
 
 # Introduction
 
-Welcome to the RAYPACK AI Platform! You can use our API to run AI models and receive their output via jpeg or json.
-
-We have language bindings mainly in Shell, but we also set up some experimental Python code! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models . We offer read-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded in existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language to access our API is Shell, but we also set up some experimental Python code. You can view code examples in the dark area to the right, and you can switch to the programming language of your choice with the tabs in the top right.
 
 
 
@@ -29,46 +27,105 @@ We have language bindings mainly in Shell, but we also set up some experimental 
 
 
 ```python
-import kittn
+import RAYPACK
 
-api = kittn.authorize('meowmeowmeow')
+api = RAYPACK.authorize('meowmeowmeow')
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request.
-curl -X POST -F "apikey=meowmeowmeow" ... 
+curl -X POST -F "apikey=meowmeowmeow" ...
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
 
-RAYPACK AI uses API-keys to allow access to the API. You can register for a trial key at our [homepage](http://raypack.ai).
+Our platforms uses API-keys to allow access to the API. You can register for a trial key at our [homepage](http://raypack.ai).
 
-The API expects for the API-key to be included in all API requests to the server in a header that looks like the following:
+In general the API expects for the API-key to be included in all API requests to the server as a parameter, that looks like the following example:
 
-F "apikey: meowmeowmeow"
+-F "apikey: meowmeowmeow"
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
 # RAYPACK AI models
-Currently the RAYPACK AI platform offers face detection, food detection and object recognition
+Currently the RAYPACK AI platform offers 5 pre-trained models.
+These models are:
+
+* Multi-object detection
+* Food detection
+* Face AI
+* Celebrity recognition US
+* Demographics analyzer.
+
+## RAYPACK Multi-Object detection
+
+```python
+import
+```
+> The command below requests the analysis of the image given in file and returns a JSON:
+
+```shell
+curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
+-F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
+-F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
+```
+
+> The above command returns a JSON like so:
+
+```json
+{
+"name":"Raypack_AI_Filecontainer",
+"version":"1.0",
+"license":"commercial",
+"results":
+	{"stats":
+		{"modelname":"Raypack_Food",
+		 "modelid":"2",
+		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
+		 "starttime":1544183968616,
+		 "endtime":1544183970545,
+		 "duration":1.929},
+	"tags":
+		[{"name":"pasta","value":"1.00000000"},
+                 {"name":"sauce","value":"1.00000000"},
+		 {"name":"cheese","value":"1.00000000"},{"name":"macaroni","value":"1.00000000"}]}
+}
+```
+
+RAYPACK Multi-Object Detection is a ready-to- deploy AI model, that enables simultaneous detection of all kinds of objects. It comes with a large number of pre-trained objects and can be extended to other objects relevant to your business needs. Its highly accurate performance and flexibility make RAYPACK Multi-Object Detection your best choice for almost any camera-based business application.
+
+<aside class="warning">Videos are not supported yet.</aside>
+
+### HTTP Request
+
+POST `https://apiv3.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | 0.9 | Sets the threshold of detection certainty required to return an object as detected.
+file | - | Lets you specify your input file.
+model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
+lang | de | Language of the output. Can be English (lang=en) or German (lang=de).
 
 ## RAYPACK Face AI
 
 ```python
 import ...
 ```
+> The command below requests the analysis of the image in imagef and returns the results as a JSON or JPEG:
 
 ```shell
 curl -X POST -F "meowmeowmeow"
--F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg" 
+-F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg"
 -F "mode=json" -F "facemode=default" -F "hex=00ff00" "http://otc.raypack.ai:5000/raypackfacev3"
 
 ```
 
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured like so:
 
 ```json
 {
@@ -86,14 +143,11 @@ curl -X POST -F "meowmeowmeow"
 }
 ```
 
-> or an image like this:  
+> Or an image like so, if you chose the default option for anonymization:    
 <img src="/images/test_default_grün.jpg">
 
-This endpoint lets you use FACE AI with your own images.
+RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of circumstances, including massive occlusion and crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.  
 
-Our Face AI is very accurate in a broad range of circumstances. One output example would be:
-
-<img src="/images/test_default_grün.jpg">
 
 ### HTTP Request
 
@@ -103,23 +157,23 @@ POST `http://otc.raypack.ai:5000/raypackfacev3`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty.
-imagef | - | Lets you specify the location of your input file.
-Mode |image | Defines the form of returned output. Can be jpg, json .
-facemode | - | Lets you determine the level of anonymization in the output. default (none), pixel (blurred), fill (face replaced by colored rectangle) and black (only bounding boxes) and jsonimage (both image and json)
+threshold | 0.9 | Sets the threshold of detection certainty required to return an object as detected.
+imagef | - | Lets you specify your input file.
+mode |image | Defines the form of returned output. The model can return jpeg images (mode=image), JSON structures (mode=json) or both(mode=jsonimage).
+facemode | - | Lets you determine the level of anonymization in the output. You can decide if you want the original image with a bounding box (facemode=default), blurred faces (facemode=pixel), faces replaced with rectangles (facemode=fill) or only core information on black background (facemode=black).
 
 <aside class="success">
 Remember — always use your API-key to validate your request!
 </aside>
 
-## Object Detection
+## RAYPACK Celebrity detection US
 
 ```python
 import
 ```
 
 ```shell
-curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0" 
+curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
 -F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
 -F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
 ```
@@ -132,7 +186,7 @@ curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
 "version":"1.0",
 "license":"commercial",
 "results":
-	{"stats": 
+	{"stats":
 		{"modelname":"Raypack_Food",
 		 "modelid":"2",
 		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
@@ -146,7 +200,8 @@ curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
 }
 ```
 
-This endpoint lets you detect objects in pictures and videos.
+RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
+The model can be expanded with any desired celebrity.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -154,14 +209,61 @@ This endpoint lets you detect objects in pictures and videos.
 
 POST `https://apiv3.raypack.ai/recog`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 threshold | 0.9 | Sets the threshold of detection certainty.
 File | - | Lets you specify the location of your input file.
-model | - | Lets you specify if you want to detect objects in general (1) or foods (2).
-lang | de | Language of the output json
+model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
+lang | de | Language of the output.
+
+## RAYPACK Demographics detection
+
+```python
+import
+```
+
+```shell
+curl -X POST -F "apikey=meowmeowmeow" -F "threshold=0.2"
+-F "url=https://www.br.de/fernsehen/das-erste/sendungen/report-muenchen/videos-und-manuskripte/kuenstliche-intelligenz-126~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg"
+-F "model=5" -F "lang=de" "https://apiv3.raypack.ai/recog"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"name":"Raypack_AI_Filecontainer",
+"version":"1.0",
+"license":"commercial",
+"results":
+	{"stats":
+		{"modelname":"Raypack_Food",
+		 "modelid":"2",
+		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
+		 "starttime":1544183968616,
+		 "endtime":1544183970545,
+		 "duration":1.929},
+	"tags":
+		[{"name":"pasta","value":"1.00000000"},
+                 {"name":"sauce","value":"1.00000000"},
+		 {"name":"cheese","value":"1.00000000"},{"name":"macaroni","value":"1.00000000"}]}
+}
+```
+
+RAYPACK Demographics
 
 
+### HTTP Request
 
+POST `https://apiv3.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | 0.9 | Sets the threshold of detection certainty.
+File | - | Lets you specify the location of your input file.
+model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
+lang | de | Language of the output.
