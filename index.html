@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,7 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -230,6 +229,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#raypack-multi-object-detection" class="toc-h2 toc-link" data-title="RAYPACK Multi-Object detection">RAYPACK Multi-Object detection</a>
+                  </li>
+                  <li>
+                    <a href="#raypack-food-detection" class="toc-h2 toc-link" data-title="RAYPACK Food Detection">RAYPACK Food Detection</a>
                   </li>
                   <li>
                     <a href="#raypack-face-ai" class="toc-h2 toc-link" data-title="RAYPACK Face AI">RAYPACK Face AI</a>
@@ -254,20 +256,17 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models . We offer ready-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded in existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language to access our API is Shell, but we also set up some experimental Python code. You can view code examples in the dark area to the right, and you can switch to the programming language of your choice with the tabs in the top right.</p>
+<p>Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models . We offer ready-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded in existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language to access our API is Shell, but you can customize the code examples to any language you prefer. You can view code examples in the dark area to the right.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use your API-key in the blank space after &#39;apikey=&#39;in every request you send:</p>
 </blockquote>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">RAYPACK</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">RAYPACK</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request.</span>
-curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> ...
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request.</span>
+curl -X POST -F <span class="s2">"apikey= "</span> ...
 </code></pre>
 <p>Our platforms uses API-keys to allow access to the API. You can register for a trial key at our <a href="http://raypack.ai">homepage</a>.</p>
 
-<p>In general the API expects for the API-key to be included in all API requests to the server as a parameter, that looks like the following example:</p>
+<p>The server expects the API-key to be included in all API requests as a parameter, that looks like the following example:</p>
 
 <p>-F &quot;apikey: meowmeowmeow&quot;</p>
 
@@ -285,14 +284,16 @@ These models are:</p>
 <li>Celebrity recognition US</li>
 <li>Demographics analyzer.</li>
 </ul>
-<h2 id='raypack-multi-object-detection'>RAYPACK Multi-Object detection</h2><pre class="highlight python tab-python"><code><span class="k">import</span>
-</code></pre>
+
+<p>You can get an overview over all available models with the API request on the right.</p>
+<h2 id='raypack-multi-object-detection'>RAYPACK Multi-Object detection</h2>
 <blockquote>
 <p>The command below requests the analysis of the image given in file and returns a JSON:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=1.0"</span>
--F <span class="s2">"file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"</span>
--F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=ffee2211"</span> -F <span class="s2">"threshold=0.9"</span>
+-F <span class="s2">"file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/rawpixel-645294-unsplash.jpg"</span>
+-F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON like so:</p>
@@ -322,7 +323,7 @@ These models are:</p>
 
 <aside class="warning">Videos are not supported yet.</aside>
 <h3 id='http-request'>HTTP Request</h3>
-<p>POST <code>https://apiv3.raypack.ai/recog</code></p>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -342,14 +343,19 @@ These models are:</p>
 <td>Lets you specify your input file.</td>
 </tr>
 <tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
 <td>model</td>
 <td>-</td>
-<td>Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).</td>
+<td>Indicates which model you want to use.  1 = Multi-Object 2 = Food 3 = Celebrity US 4 = Face AI 5 = Demographics</td>
 </tr>
 <tr>
 <td>lang</td>
 <td>de</td>
-<td>Language of the output. Can be English (lang=en) or German (lang=de).</td>
+<td>Language of the output. Can be English lang=en or German lang=de.</td>
 </tr>
 </tbody></table>
 <h3 id='json-response-schema'>JSON response schema</h3>
@@ -421,8 +427,146 @@ These models are:</p>
 <td>Contains Name and confidence of the detected objects (both strings)</td>
 </tr>
 </tbody></table>
-<h2 id='raypack-face-ai'>RAYPACK Face AI</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">...</span>
+<h2 id='raypack-food-detection'>RAYPACK Food Detection</h2>
+<blockquote>
+<p>The command below requests the analysis of the image given in file and returns a JSON:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=ffee2211"</span> -F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"</span> -F <span class="s2">"model=2"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
 </code></pre>
+<blockquote>
+<p>The above command returns a JSON like so:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"results"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"Raypack_Food"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1544183968616</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1544183970545</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">1.929</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"sauce"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"cheese"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"macaroni"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>RAYPACK Food Detection is a ready-to-deploy AI model, that enables detection of foods. It can be used to detect many different classes of foods and can be expanded upon request.</p>
+
+<aside class="warning">Videos are not supported yet.</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>0.9</td>
+<td>Sets the threshold of detection certainty required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use.  1 = Multi-Object 2 = Food 3 = Celebrity US 4 = Face AI 5 = Demographics</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>de</td>
+<td>Language of the output. Can be English lang=en or German lang=de.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-2'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>dict</td>
+<td>Contains Name and confidence of the detected objects (both strings)</td>
+</tr>
+</tbody></table>
+<h2 id='raypack-face-ai'>RAYPACK Face AI</h2>
 <blockquote>
 <p>The command below requests the analysis of the image in imagef and returns the results as a JSON or JPEG:</p>
 </blockquote>
@@ -454,9 +598,9 @@ These models are:</p>
 </blockquote>
 
 <p>RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of circumstances, including massive occlusion and crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.  </p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p>POST <code>http://otc.raypack.ai:5000/raypackfacev3</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -470,9 +614,14 @@ These models are:</p>
 <td>Sets the threshold of detection certainty required to return an object as detected.</td>
 </tr>
 <tr>
-<td>imagef</td>
+<td>file</td>
 <td>-</td>
 <td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
 </tr>
 <tr>
 <td>mode</td>
@@ -489,7 +638,7 @@ These models are:</p>
 <aside class="success">
 Remember — always use your API-key to validate your request!
 </aside>
-<h3 id='json-response-schema-2'>JSON response schema</h3>
+<h3 id='json-response-schema-3'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -513,8 +662,7 @@ Remember — always use your API-key to validate your request!
 <td>Bounding box(es) of the detected face(s) with xpos, ypos, width, height and confidence</td>
 </tr>
 </tbody></table>
-<h2 id='raypack-celebrity-detection-us'>RAYPACK Celebrity detection US</h2><pre class="highlight python tab-python"><code><span class="k">import</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=1.0"</span>
+<h2 id='raypack-celebrity-detection-us'>RAYPACK Celebrity detection US</h2><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=1.0"</span>
 -F <span class="s2">"file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"</span>
 -F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
 </code></pre>
@@ -544,9 +692,9 @@ Remember — always use your API-key to validate your request!
 The model can be expanded with any desired celebrity or common person.</p>
 
 <aside class="warning">Videos are not supported yet.</aside>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p>POST <code>https://apiv3.raypack.ai/recog</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -575,8 +723,7 @@ The model can be expanded with any desired celebrity or common person.</p>
 <td>Language of the output.</td>
 </tr>
 </tbody></table>
-<h2 id='raypack-demographics-detection'>RAYPACK Demographics detection</h2><pre class="highlight python tab-python"><code><span class="k">import</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=0.2"</span>
+<h2 id='raypack-demographics-detection'>RAYPACK Demographics detection</h2><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=0.2"</span>
 -F <span class="s2">"url=https://www.br.de/fernsehen/das-erste/sendungen/report-muenchen/videos-und-manuskripte/kuenstliche-intelligenz-126~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg"</span>
 -F <span class="s2">"model=5"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
 </code></pre>
@@ -596,16 +743,17 @@ The model can be expanded with any desired celebrity or common person.</p>
          </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1544183970545</span><span class="p">,</span><span class="w">
          </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">1.929</span><span class="p">},</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w">
-        </span><span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"sauce"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
          </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"cheese"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"macaroni"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">}]}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>RAYPACK Demographics</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p>POST <code>https://apiv3.raypack.ai/recog</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -693,7 +841,6 @@ Here is how to interpret errors you might encounter. <code>error</code>. Errors 
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
