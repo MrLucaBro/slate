@@ -58,7 +58,7 @@ You can get an overview over all available models with the API request on the ri
 > The command below requests the analysis of the image given in file and returns a JSON:
 
 ```shell
-curl -X POST -F "apikey=ffee2211" -F "threshold=0.9"
+curl -X POST -F "apikey= " -F "threshold=0.9"
 -F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/rawpixel-645294-unsplash.jpg"
 -F "model=1" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -129,7 +129,7 @@ tags | dict |  Contains Name and confidence of the detected objects (both string
 > The command below requests the analysis of the image given in file and returns a JSON:
 
 ```shell
-curl -X POST -F "apikey=ffee2211" -F "threshold=0.9" -F "url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg" -F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
+curl -X POST -F "apikey= " -F "threshold=0.9" -F "url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg" -F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
 
@@ -196,7 +196,7 @@ tags | dict |  Contains Name and confidence of the detected objects (both string
 ## RAYPACK Celebrity Detection US
 
 ```shell
-curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
+curl -X POST -F "apikey= " -F "threshold=1.0"
 -F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
 -F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
 ```
@@ -231,7 +231,7 @@ The model can be expanded with any desired celebrity or common person.
 
 ### HTTP Request
 
-POST `https://apiv3.raypack.ai/recog`
+POST `https://api.raypack.ai/recog`
 
 ### Query Parameters
 
@@ -247,8 +247,8 @@ lang | de | Language of the output.
 > The command below requests the analysis of the image in imagef and returns the results as a JSON or JPEG:
 
 ```shell
-curl -X POST -F "meowmeowmeow"
--F "threshold=0.9" -F "imagef=https://cvdazzle.com/assets/img/look5r-md.jpg"
+curl -X POST -F "apikey= "
+-F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg"
 -F "mode=json" -F "facemode=default" -F "hex=00ff00" "http://otc.raypack.ai:5000/raypackfacev3"
 
 ```
@@ -280,7 +280,7 @@ RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as
 
 ### HTTP Request
 
-POST `http://otc.raypack.ai:5000/raypackfacev3`
+POST `https://api.raypack.ai/recog`
 
 ### Query Parameters
 
@@ -307,7 +307,7 @@ faces | dict |  Bounding box(es) of the detected face(s) with xpos, ypos, width,
 ## RAYPACK Demographics Detection
 
 ```shell
-curl -X POST -F "apikey=meowmeowmeow" -F "threshold=0.2"
+curl -X POST -F "apikey= " -F "threshold=0.2"
 -F "url=https://www.br.de/fernsehen/das-erste/sendungen/report-muenchen/videos-und-manuskripte/kuenstliche-intelligenz-126~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg"
 -F "model=5" -F "lang=de" "https://apiv3.raypack.ai/recog"
 ```
