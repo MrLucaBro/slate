@@ -228,19 +228,19 @@
             <a href="#raypack-ai-models" class="toc-h1 toc-link" data-title="RAYPACK AI models">RAYPACK AI models</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#raypack-multi-object-detection" class="toc-h2 toc-link" data-title="RAYPACK Multi-Object detection">RAYPACK Multi-Object detection</a>
+                    <a href="#raypack-multi-object-detection" class="toc-h2 toc-link" data-title="RAYPACK Multi-Object Detection">RAYPACK Multi-Object Detection</a>
                   </li>
                   <li>
                     <a href="#raypack-food-detection" class="toc-h2 toc-link" data-title="RAYPACK Food Detection">RAYPACK Food Detection</a>
                   </li>
                   <li>
+                    <a href="#raypack-celebrity-detection-us" class="toc-h2 toc-link" data-title="RAYPACK Celebrity Detection US">RAYPACK Celebrity Detection US</a>
+                  </li>
+                  <li>
                     <a href="#raypack-face-ai" class="toc-h2 toc-link" data-title="RAYPACK Face AI">RAYPACK Face AI</a>
                   </li>
                   <li>
-                    <a href="#raypack-celebrity-detection-us" class="toc-h2 toc-link" data-title="RAYPACK Celebrity detection US">RAYPACK Celebrity detection US</a>
-                  </li>
-                  <li>
-                    <a href="#raypack-demographics-detection" class="toc-h2 toc-link" data-title="RAYPACK Demographics detection">RAYPACK Demographics detection</a>
+                    <a href="#raypack-demographics-detection" class="toc-h2 toc-link" data-title="RAYPACK Demographics Detection">RAYPACK Demographics Detection</a>
                   </li>
               </ul>
           </li>
@@ -286,7 +286,7 @@ These models are:</p>
 </ul>
 
 <p>You can get an overview over all available models with the API request on the right.</p>
-<h2 id='raypack-multi-object-detection'>RAYPACK Multi-Object detection</h2>
+<h2 id='raypack-multi-object-detection'>RAYPACK Multi-Object Detection</h2>
 <blockquote>
 <p>The command below requests the analysis of the image given in file and returns a JSON:</p>
 </blockquote>
@@ -566,6 +566,67 @@ These models are:</p>
 <td>Contains Name and confidence of the detected objects (both strings)</td>
 </tr>
 </tbody></table>
+<h2 id='raypack-celebrity-detection-us'>RAYPACK Celebrity Detection US</h2><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=1.0"</span>
+-F <span class="s2">"file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"</span>
+-F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"Raypack_Food"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1544183968616</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1544183970545</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">1.929</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"sauce"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"cheese"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"macaroni"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">}]}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
+The model can be expanded with any desired celebrity or common person.</p>
+
+<aside class="warning">Videos are not supported yet.</aside>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p>POST <code>https://apiv3.raypack.ai/recog</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>0.9</td>
+<td>Sets the threshold of detection certainty.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify the location of your input file.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>de</td>
+<td>Language of the output.</td>
+</tr>
+</tbody></table>
 <h2 id='raypack-face-ai'>RAYPACK Face AI</h2>
 <blockquote>
 <p>The command below requests the analysis of the image in imagef and returns the results as a JSON or JPEG:</p>
@@ -598,9 +659,9 @@ These models are:</p>
 </blockquote>
 
 <p>RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of circumstances, including massive occlusion and crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.  </p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p>POST <code>http://otc.raypack.ai:5000/raypackfacev3</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -662,68 +723,7 @@ Remember — always use your API-key to validate your request!
 <td>Bounding box(es) of the detected face(s) with xpos, ypos, width, height and confidence</td>
 </tr>
 </tbody></table>
-<h2 id='raypack-celebrity-detection-us'>RAYPACK Celebrity detection US</h2><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=1.0"</span>
--F <span class="s2">"file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"</span>
--F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"results"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
-        </span><span class="p">{</span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"Raypack_Food"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1544183968616</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1544183970545</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">1.929</span><span class="p">},</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w">
-        </span><span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"sauce"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"cheese"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"macaroni"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">}]}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
-The model can be expanded with any desired celebrity or common person.</p>
-
-<aside class="warning">Videos are not supported yet.</aside>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p>POST <code>https://apiv3.raypack.ai/recog</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>threshold</td>
-<td>0.9</td>
-<td>Sets the threshold of detection certainty.</td>
-</tr>
-<tr>
-<td>file</td>
-<td>-</td>
-<td>Lets you specify the location of your input file.</td>
-</tr>
-<tr>
-<td>model</td>
-<td>-</td>
-<td>Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).</td>
-</tr>
-<tr>
-<td>lang</td>
-<td>de</td>
-<td>Language of the output.</td>
-</tr>
-</tbody></table>
-<h2 id='raypack-demographics-detection'>RAYPACK Demographics detection</h2><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=0.2"</span>
+<h2 id='raypack-demographics-detection'>RAYPACK Demographics Detection</h2><pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=meowmeowmeow"</span> -F <span class="s2">"threshold=0.2"</span>
 -F <span class="s2">"url=https://www.br.de/fernsehen/das-erste/sendungen/report-muenchen/videos-und-manuskripte/kuenstliche-intelligenz-126~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg"</span>
 -F <span class="s2">"model=5"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://apiv3.raypack.ai/recog"</span>
 </code></pre>
