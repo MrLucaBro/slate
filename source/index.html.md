@@ -53,7 +53,7 @@ These models are:
 
 You can get an overview over all available models with the API request on the right.
 
-## RAYPACK Multi-Object detection
+## RAYPACK Multi-Object Detection
 
 > The command below requests the analysis of the image given in file and returns a JSON:
 
@@ -193,6 +193,55 @@ endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
 tags | dict |  Contains Name and confidence of the detected objects (both strings)
 
+## RAYPACK Celebrity Detection US
+
+```shell
+curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
+-F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
+-F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"name":"Raypack_AI_Filecontainer",
+"version":"1.0",
+"license":"commercial",
+"results":
+	{"stats":
+		{"modelname":"Raypack_Food",
+		 "modelid":"2",
+		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
+		 "starttime":1544183968616,
+		 "endtime":1544183970545,
+		 "duration":1.929},
+	"tags":
+		[{"name":"pasta","value":"1.00000000"},
+     {"name":"sauce","value":"1.00000000"},
+		 {"name":"cheese","value":"1.00000000"},
+     {"name":"macaroni","value":"1.00000000"}]}
+}
+```
+
+RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
+The model can be expanded with any desired celebrity or common person.
+
+<aside class="warning">Videos are not supported yet.</aside>
+
+### HTTP Request
+
+POST `https://apiv3.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | 0.9 | Sets the threshold of detection certainty.
+file | - | Lets you specify the location of your input file.
+model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
+lang | de | Language of the output.
+
 ## RAYPACK Face AI
 
 > The command below requests the analysis of the image in imagef and returns the results as a JSON or JPEG:
@@ -255,57 +304,7 @@ totalfaces | integer | Number of detected faces within the image
 time | float | Time spent processing the image
 faces | dict |  Bounding box(es) of the detected face(s) with xpos, ypos, width, height and confidence
 
-
-## RAYPACK Celebrity detection US
-
-```shell
-curl -X POST -F "apikey=meowmeowmeow" -F "threshold=1.0"
--F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
--F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"name":"Raypack_AI_Filecontainer",
-"version":"1.0",
-"license":"commercial",
-"results":
-	{"stats":
-		{"modelname":"Raypack_Food",
-		 "modelid":"2",
-		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-		 "starttime":1544183968616,
-		 "endtime":1544183970545,
-		 "duration":1.929},
-	"tags":
-		[{"name":"pasta","value":"1.00000000"},
-     {"name":"sauce","value":"1.00000000"},
-		 {"name":"cheese","value":"1.00000000"},
-     {"name":"macaroni","value":"1.00000000"}]}
-}
-```
-
-RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
-The model can be expanded with any desired celebrity or common person.
-
-<aside class="warning">Videos are not supported yet.</aside>
-
-### HTTP Request
-
-POST `https://apiv3.raypack.ai/recog`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty.
-file | - | Lets you specify the location of your input file.
-model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
-lang | de | Language of the output.
-
-## RAYPACK Demographics detection
+## RAYPACK Demographics Detection
 
 ```shell
 curl -X POST -F "apikey=meowmeowmeow" -F "threshold=0.2"
