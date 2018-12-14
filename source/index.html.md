@@ -337,7 +337,7 @@ curl -X POST -F "apikey= "
 ```
 
 > Or an image like so, if you chose the default option for anonymization:    
-<img src="/images/test_default_grün.jpg">
+<img src="/images/test-default-gruen.jpg">
 
 RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of difficult conditions, including massive occlusion of faces, and large crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.   
 
