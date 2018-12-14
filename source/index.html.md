@@ -16,7 +16,7 @@ search: true
 
 # Introduction
 
-Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models . We offer ready-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded in existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language to access our API is Shell, but you can customize the code examples to any language you prefer. You can view code examples in the dark area to the right.
+Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution enabling users to deploy and develop AI models. We offer ready-to-deploy as well as custom models to improve the efficiency of your business with AI. All our models are deployable as a service on our platform or can be conveniently embedded into existing systems on-premise. You can use our API to run AI models and receive their output as an image (.jpg) or as a JSON file. The main language used to access our API is Shell, but you can customize the code examples to any language you prefer. You can view code examples in the dark area to the right.
 
 
 
@@ -31,65 +31,82 @@ curl -X POST -F "apikey= " ...
 ```
 
 
-Our platforms uses API-keys to allow access to the API. You can register for a trial key at our [homepage](http://raypack.ai).
+Our platform uses API-keys to allow access to the API. You can register for a trial key at our [homepage](http://raypack.ai).
 
 The server expects the API-key to be included in all API requests as a parameter, that looks like the following example:
 
--F "apikey: meowmeowmeow"
+-F "apikey:****"
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>****</code> with your personal API key.
 </aside>
 
 # RAYPACK AI models
-Currently the RAYPACK AI platform offers 5 pre-trained models.
+> The call below requests a list of available models and returns it as a JSON:
+
+```shell
+curl -X POST -F 'apikey= ' 'https://api.raypack.ai/getmodels'
+```
+
+The RAYPACK AI platform offers a number of ready-to-deploy models.
 These models are:
 
 * Multi-object detection
 * Food detection
 * Face AI
-* Celebrity recognition US
-* Demographics analyzer.
+* Celebrity Detection US
+* Demographics Detection
 
-You can get an overview over all available models with the API request on the right.
+You can connect with the RAYPACK Platform API by sending http requests to our API server `https://api.raypack.ai`.
+You can get an overview over all available models by sending the http request on the right to the endpoint `https://api.raypack.ai/getmodels`. The models themselves are available under the endpoint `https://api.raypack.ai/recog`. In this section we will give detailed examples of how you could use each of our ready-to-deploy models.
 
 ## RAYPACK Multi-Object Detection
 
-> The command below requests the analysis of the image given in file and returns a JSON:
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+<img src="/images/rawpixel-645294-unsplash.jpg">
 
 ```shell
 curl -X POST -F "apikey= " -F "threshold=0.9"
--F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/rawpixel-645294-unsplash.jpg"
+-F "file=rawpixel-645294-unsplash.jpg"
 -F "model=1" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
 
-> The above command returns a JSON like so:
+> The above call returns a JSON like so:
 
 ```json
 {
-"name":"Raypack_AI_Filecontainer",
-"version":"1.0",
-"license":"commercial",
-"results":{
-    "stats":{
-    "modelname":"Raypack_Food",
-	 "modelid":"2",
-	 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-	 "starttime":1544183968616,
-	 "endtime":1544183970545,
-	 "duration":1.929},
-	"tags":[
-      {"name":"pasta","value":"1.00000000"},
-      {"name":"sauce","value":"1.00000000"},
-      {"name":"cheese","value":"1.00000000"},
-      {"name":"macaroni","value":"1.00000000"}
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"Raypack_General",
+      "modelid":"1",
+      "originalfile":"rawpixel-645294-unsplash.jpg",
+      "starttime":1544690825238,
+      "endtime":1544690827012,
+      "duration":1.774
+    },
+    "tags":
+    [
+      {"name":"keine Person","value":"1.00000000"},
+      {"name":"papier","value":"1.00000000"},
+      {"name":"unternehmen","value":"1.00000000"},
+      {"name":"laptop","value":"0.97501550"},
+      {"name":"Daten","value":"0.95598294"},
+      {"name":"dokument","value":"0.91890140"},
+      {"name":"technologie","value":"0.91787786"},
+      {"name":"büro","value":"0.91769530"}
     ]
   }
 }
 ```
 
-RAYPACK Multi-Object Detection is a ready-to-deploy AI model, that enables simultaneous detection of all kinds of objects. It comes with a large number of pre-trained objects and can be extended to other objects relevant to your business needs. Its highly accurate performance and flexibility make RAYPACK Multi-Object Detection your best choice for almost any camera-based business application.
+RAYPACK Multi-Object Detection is a ready-to-deploy AI model, that enables simultaneous detection of all kinds of objects. It comes with a large number of pre-trained objects and can be extended to others relevant to your business needs. Its highly accurate performance and flexibility make RAYPACK Multi-Object Detection your best choice for almost any camera-based business application.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -101,11 +118,11 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
-model | - | Indicates which model you want to use.  1 = Multi-Object 2 = Food 3 = Celebrity US 4 = Face AI 5 = Demographics
-lang | de | Language of the output. Can be English lang=en or German lang=de.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
 
 ### JSON response schema
 
@@ -122,39 +139,47 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence of the detected objects (both strings)
+tags | dict |  Contains name and confidence value of the detected objects (both strings)
 
 ## RAYPACK Food Detection
 
-> The command below requests the analysis of the image given in file and returns a JSON:
+> The call below requests the analysis of the image given in url and returns a JSON:  
+Here is an example:  
+<img src="/images/hawaii.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.9" -F "url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg" -F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
+curl -X POST -F "apikey= " -F "threshold=0.9"
+-F "url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"
+-F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
 
-> The above command returns a JSON like so:
+> The above call returns a JSON like so:
 
 ```json
 {
 "name":"Raypack_AI_Filecontainer",
 "version":"1.0",
 "license":"commercial",
-"results":{
-    "stats":{
+"results":
+{
+  "stats":
+  {
     "modelname":"Raypack_Food",
-	 "modelid":"2",
-	 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-	 "starttime":1544183968616,
-	 "endtime":1544183970545,
-	 "duration":1.929},
-	"tags":[
-      {"name":"pasta","value":"1.00000000"},
-      {"name":"sauce","value":"1.00000000"},
-      {"name":"cheese","value":"1.00000000"},
-      {"name":"macaroni","value":"1.00000000"}
-    ]
-  }
+    "modelid":"2",
+    "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
+    "starttime":1544183968616,
+    "endtime":1544183970545,
+    "duration":1.929
+  },
+  "tags":
+  [
+    {"name":"pasta","value":"1.00000000"},
+    {"name":"sauce","value":"1.00000000"},
+    {"name":"cheese","value":"1.00000000"},
+    {"name":"macaroni","value":"1.00000000"}
+  ]
+}
 }
 ```
 
@@ -170,11 +195,11 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
-model | - | Indicates which model you want to use.  1 = Multi-Object 2 = Food 3 = Celebrity US 4 = Face AI 5 = Demographics
-lang | de | Language of the output. Can be English lang=en or German lang=de.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
 
 ### JSON response schema
 
@@ -191,36 +216,56 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence of the detected objects (both strings)
+tags | dict |  Contains name and confidence value of the detected food objects (both as strings)
 
 ## RAYPACK Celebrity Detection US
 
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+<img src="/images/Brad_Pitt_at_Incirlik2.jpg">
+
 ```shell
-curl -X POST -F "apikey= " -F "threshold=1.0"
--F "file=@/Users/luca/Documents/Aiso.Lab/API_Doku/Bilder/richard-clark-1177371-unsplash.jpg"
--F "model=1" -F "lang=de" "https://apiv3.raypack.ai/recog"
+curl -X POST -F "apikey= " -F "threshold=0.9"
+-F "file=Brad_Pitt_at_Incirlik2.jpg"
+-F "model=3" -F "lang=de" "https://api.raypack.ai/recog"
+
 ```
 
-> The above command returns JSON structured like this:
+> The above call returns JSON structured like so:
 
 ```json
 {
-"name":"Raypack_AI_Filecontainer",
-"version":"1.0",
-"license":"commercial",
-"results":
-	{"stats":
-		{"modelname":"Raypack_Food",
-		 "modelid":"2",
-		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-		 "starttime":1544183968616,
-		 "endtime":1544183970545,
-		 "duration":1.929},
-	"tags":
-		[{"name":"pasta","value":"1.00000000"},
-     {"name":"sauce","value":"1.00000000"},
-		 {"name":"cheese","value":"1.00000000"},
-     {"name":"macaroni","value":"1.00000000"}]}
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"Raypack Celeb US",
+      "modelid":"3",
+      "originalfile":"Brad_Pitt_at_Incirlik2.jpg",
+      "starttime":1544679684188,
+      "endtime":1544679685623,
+      "duration":1.435
+    },
+    "tags":
+    [
+      {
+        "top":0.13956678,
+        "left":0.5285845,
+        "bottom":0.32516763,
+        "right":0.769893,
+        "idents":
+        [
+          {
+            "name":"brad pitt",
+            "value":0.9541806
+          },
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -237,30 +282,49 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty.
-file | - | Lets you specify the location of your input file.
-model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
-lang | de | Language of the output.
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+tags | dict |  Contains Name and confidence value of the detected celebrity as well as the location on the image
 
 ## RAYPACK Face AI
 
-> The command below requests the analysis of the image in imagef and returns the results as a JSON or JPEG:
+> The call below requests the analysis of the image in url and returns the results as a JSON or JPEG:
 
 ```shell
 curl -X POST -F "apikey= "
 -F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg"
--F "mode=json" -F "facemode=default" -F "hex=00ff00" "http://otc.raypack.ai:5000/raypackfacev3"
+-F "mode=json" -F "facemode=default" -F "hex=00ff00" "https://api.raypack.ai/recog"
 
 ```
 
 
-> The above command returns JSON structured like so:
+> The above call returns JSON structured like so:
 
 ```json
 {
     "totalfaces": 1,
     "time": 1.422919750213623,
-    "faces": [
+    "faces":
+    [
         {
             "xpos": 268,
             "ypos": 102,
@@ -275,7 +339,7 @@ curl -X POST -F "apikey= "
 > Or an image like so, if you chose the default option for anonymization:    
 <img src="/images/test_default_grün.jpg">
 
-RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of circumstances, including massive occlusion and crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.  
+RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of difficult conditions, including massive occlusion of faces, and large crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.   
 
 
 ### HTTP Request
@@ -286,14 +350,18 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
-mode |image | Defines the form of returned output. The model can return jpeg images (mode=image), JSON structures (mode=json) or both(mode=jsonimage).
-facemode | - | Lets you determine the level of anonymization in the output. You can decide if you want the original image with a bounding box (facemode=default), blurred faces (facemode=pixel), faces replaced with rectangles (facemode=fill) or only core information on black background (facemode=black).
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+mode | - | Defines the form of returned output. The model can return JPEG images `mode=image`, JSON files `mode=json` or both `mode=jsonimage`.
+facemode | - | Lets you determine the level of anonymization in the output. You can decide if you want the original image with a bounding box `facemode=default`, blurred faces `facemode=pixel`, faces replaced with rectangles `facemode=fill` or only core information on black background `facemode=black`.
+facefinder | 3 | Lets you determine the level of upscaling of the image given to the model. The options are: No upscaling `facefinder=1`, upscaling by a factor of 0.5 `facefinder=1` and upscaling by the factors 2, 1 and 0.5 `facefinder=3` .
+hex | - | Lets you determine the color of the bounding boxes drawn onto the output images. For example `hex=#FF0000` for red bounding boxes. You can enter the value in upper and lower cases and with or without the #.
 
 <aside class="success">
-Remember — always use your API-key to validate your request!
+Remember — always use your API-key to validate your http request!
 </aside>
 
 ### JSON response schema
@@ -302,41 +370,64 @@ Parameter | Type | Description
 --------- | ------- | -----------
 totalfaces | integer | Number of detected faces within the image
 time | float | Time spent processing the image
-faces | dict |  Bounding box(es) of the detected face(s) with xpos, ypos, width, height and confidence
+faces | dict |  Bounding box(es) of the detected face(s)
+xpos | float |  Top left bounding box corner x-coordinate
+ypos | float |  Top left bounding box corner y-coordinate
+height | float |  Height of the bounding box
+width | float |  Width of the bounding box
+confidence | float |  Confidence score of the accuracy of the detection
 
 ## RAYPACK Demographics Detection
 
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+<img src="/images/ki.jpg">
+
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.2"
--F "url=https://www.br.de/fernsehen/das-erste/sendungen/report-muenchen/videos-und-manuskripte/kuenstliche-intelligenz-126~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg"
--F "model=5" -F "lang=de" "https://apiv3.raypack.ai/recog"
+curl -X POST -F "apikey= " -F "threshold=0.4"
+-F "file=ki.jpg"
+-F "model=5" -F "lang=de" "https://api.raypack.ai/recog"
+
 ```
 
-> The above command returns JSON structured like this:
+> The above call returns JSON structured like this:
 
 ```json
 {
-"name":"Raypack_AI_Filecontainer",
-"version":"1.0",
-"license":"commercial",
-"results":
-	{"stats":
-		{"modelname":"Raypack_Food",
-		 "modelid":"2",
-		 "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-		 "starttime":1544183968616,
-		 "endtime":1544183970545,
-		 "duration":1.929},
-	"tags":
-		[
-      {"name":"pasta","value":"1.00000000"},
-     {"name":"sauce","value":"1.00000000"},
-		 {"name":"cheese","value":"1.00000000"},
-     {"name":"macaroni","value":"1.00000000"}]}
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0","license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"Raypack_Demographics",
+      "modelid":"5",
+      "originalfile":"ki.jpg",
+      "starttime":1544680153203,
+      "endtime":1544680154600,
+      "duration":1.397
+    },
+    "tags":
+    [
+      {
+        "age":"46",
+        "gender":"masculine",
+        "culture":"white",
+        "faceregion":
+        {
+          "top_row":0.22344437,
+          "left_col":0.2502877,
+          "bottom_row":0.6817542,
+          "right_col":0.50777674
+        },
+        "value":"0.57789720"
+      }
+    ]
+  }
 }
 ```
 
-RAYPACK Demographics
+RAYPACK Demographics detects faces and adds demographic information.
 
 
 ### HTTP Request
@@ -347,7 +438,25 @@ POST `https://apiv3.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | 0.9 | Sets the threshold of detection certainty.
-file | - | Lets you specify the location of your input file.
-model | - | Lets you specify if you want to detect objects in general (1), foods (2) or celebrities (3).
-lang | de | Language of the output.
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+tags | dict |  Contains Name and confidence of the detected celebrity as well as the location on the image
