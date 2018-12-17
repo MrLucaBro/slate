@@ -530,7 +530,7 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 }
 ```
 
-RAYPACK Demographics detects faces and adds demographic information.
+RAYPACK Demographics detects clothing items in images. 
 
 
 ### HTTP Request
