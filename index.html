@@ -289,13 +289,14 @@ You must replace <code>****</code> with your personal API key.
 <p>The RAYPACK AI platform offers a number of ready-to-deploy models.
 These models are:</p>
 
-<ul>
-<li>Multi-object detection</li>
-<li>Food detection</li>
-<li>Face AI</li>
-<li>Celebrity Detection US</li>
-<li>Demographics Detection</li>
-</ul>
+<ol>
+<li>RAYPACK Multi-object Detection</li>
+<li>RAYPACK Food Detection</li>
+<li>RAYPACK Celebrity Detection US</li>
+<li>RAYPACK Face AI / RAYPACK Face AI v4</li>
+<li>RAYPACK Demographics Detection</li>
+<li>RAYPACK Fashion Detection</li>
+</ol>
 
 <p>You can connect with the RAYPACK Platform API by sending http requests to our API server <code>https://api.raypack.ai</code>.
 You can get an overview over all available models by sending the http request on the right to the endpoint <code>https://api.raypack.ai/getmodels</code>. The models themselves are available under the endpoint <code>https://api.raypack.ai/recog</code>. In this section we will give detailed examples of how you could use each of our ready-to-deploy models.</p>
@@ -751,7 +752,7 @@ The model can be expanded with any desired celebrity or common person.</p>
 <tr>
 <td>tags</td>
 <td>dict</td>
-<td>Contains Name and confidence value of the detected celebrity as well as the location on the image</td>
+<td>Contains name and confidence value of the detected celebrity as well as the location on the image</td>
 </tr>
 </tbody></table>
 <h2 id='raypack-face-ai'>RAYPACK Face AI</h2>
@@ -1285,7 +1286,7 @@ Here is an example:<br>
 <tr>
 <td>tags</td>
 <td>dict</td>
-<td>Contains Name and confidence of the detected characteristics as well as the position of the face in the image.</td>
+<td>Contains name and confidence of the detected characteristics as well as the position of the face in the image.</td>
 </tr>
 <tr>
 <td>top_row</td>
@@ -1449,7 +1450,7 @@ Here is an example:<br>
 <tr>
 <td>tags</td>
 <td>dict</td>
-<td>Contains Name and confidence of the detected clothing item</td>
+<td>Contains name and confidence of the detected clothing item</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
