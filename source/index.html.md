@@ -42,7 +42,7 @@ The server expects the API-key to be included in all API requests as a parameter
 You must replace <code>****</code> with your personal API key.
 </aside>
 
-# RAYPACK AI models
+# RAYPACK AI Models
 > The call below requests a list of available models and returns it as a JSON:
 
 ```shell
