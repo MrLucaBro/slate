@@ -488,3 +488,78 @@ starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
 tags | dict |  Contains Name and confidence of the detected celebrity as well as the location on the image
+
+## RAYPACK Fashion Detection
+
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+<img src="/images/fashion.jpg">
+
+```shell
+curl -X POST -F "apikey= " -F "threshold=0.4"
+-F "file=fashion.jpg"
+-F "model=6" -F "lang=de" "https://api.raypack.ai/recog"
+
+```
+
+> The above call returns JSON structured like this:
+
+```json
+{
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"Raypack_Clothes",
+      "modelid":"6",
+      "originalfile":"fashion.jpg",
+      "starttime":1545042059125,
+      "endtime":154504206115,
+      "duration":2.034
+    },
+    "tags":
+    [
+      {"name":"Fur Coat","value":"0.79121980"},
+      {"name":"Cardigan","value":"0.62127545"},
+      {"name":"Turtleneck","value":"0.50549158"},
+    ]
+  }
+}
+```
+
+RAYPACK Demographics detects faces and adds demographic information.
+
+
+### HTTP Request
+
+POST `https://apiv3.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+tags | dict |  Contains Name and confidence of the detected clothing item as well as the location on the image
