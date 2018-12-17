@@ -407,7 +407,7 @@ score | float |  Confidence score of the accuracy of the detection
 
 > The call below requests the analysis of the image given in file and returns a JSON:  
 Here is an example:  
-<img src="/images/CDV_4.jpg">
+<img src="/images/CVD_4.jpg">
 
 ```shell
 curl -X POST -F "apikey= " -F "threshold=0.5"
