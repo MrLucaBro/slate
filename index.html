@@ -250,6 +250,7 @@
       </ul>
         <ul class="toc-footer">
             <li><a href='https://raypack.ai'>Sign Up for a trial API-key</a></li>
+            <li><a href='https://raypack.ai'>Documentation Version 1.0.1.</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -445,12 +446,12 @@ Here is an example:<br>
 </tbody></table>
 <h2 id='raypack-food-detection'>RAYPACK Food Detection</h2>
 <blockquote>
-<p>The call below requests the analysis of the image given in url and returns a JSON:<br>
+<p>The call below requests the analysis of the image given in file and returns a JSON:<br>
 Here is an example:<br>
-<img src="images/hawaii.jpg"></p>
+<img src="images/burger.jpg"></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.9"</span>
--F <span class="s2">"url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"</span>
+-F <span class="s2">"file=burger.jpg"</span>
 -F <span class="s2">"model=2"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -467,17 +468,17 @@ Here is an example:<br>
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"Raypack_Food"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1544183968616</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1544183970545</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">1.929</span><span class="w">
+    </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"burger.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1545033109771</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1545033112489</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">2.718</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w">
   </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"sauce"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"cheese"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"macaroni"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"hamburger"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.97055126"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"bun"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.94517506"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"beef"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.91858010"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"onion"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.91512306"</span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
