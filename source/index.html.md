@@ -52,11 +52,12 @@ curl -X POST -F 'apikey= ' 'https://api.raypack.ai/getmodels'
 The RAYPACK AI platform offers a number of ready-to-deploy models.
 These models are:
 
-* Multi-object detection
-* Food detection
-* Face AI
-* Celebrity Detection US
-* Demographics Detection
+1. RAYPACK Multi-object Detection
+2. RAYPACK Food Detection
+3. RAYPACK Celebrity Detection US
+4. RAYPACK Face AI / RAYPACK Face AI v4
+5. RAYPACK Demographics Detection
+6. RAYPACK Fashion Detection
 
 You can connect with the RAYPACK Platform API by sending http requests to our API server `https://api.raypack.ai`.
 You can get an overview over all available models by sending the http request on the right to the endpoint `https://api.raypack.ai/getmodels`. The models themselves are available under the endpoint `https://api.raypack.ai/recog`. In this section we will give detailed examples of how you could use each of our ready-to-deploy models.
@@ -304,7 +305,7 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence value of the detected celebrity as well as the location on the image
+tags | dict |  Contains name and confidence value of the detected celebrity as well as the location on the image
 
 ## RAYPACK Face AI
 
@@ -570,7 +571,7 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence of the detected characteristics as well as the position of the face in the image.
+tags | dict |  Contains name and confidence of the detected characteristics as well as the position of the face in the image.
 top_row | float |  Top left bounding box corner y-coordinate
 left_col | float |  Top left bounding box corner x-coordinate
 bottom_row | float |  Bottom right bounding box corner y-coordinate
@@ -649,4 +650,4 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence of the detected clothing item
+tags | dict |  Contains name and confidence of the detected clothing item
