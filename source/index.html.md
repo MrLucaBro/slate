@@ -335,10 +335,9 @@ curl -X POST -F "apikey= "
       "originalfile":"https://cvdazzle.com/assets/img/look5r-md.jpg",
       "starttime":1545035189345,
       "endtime":1545035195714,
-      "duration":123
+      "duration":1.23
     },
     "totalfaces": 1,
-    "time": 1.422919750213623,
     "faces":
     [
         {
@@ -348,7 +347,7 @@ curl -X POST -F "apikey= "
             "height": 216,
             "score": 0.9990518015849545
         }
-    ]
+    ],
   }
 }
 ```
@@ -403,6 +402,90 @@ ypos | float |  Top left bounding box corner y-coordinate
 height | float |  Height of the bounding box
 width | float |  Width of the bounding box
 score | float |  Confidence score of the accuracy of the detection
+
+## RAYPACK Face AI v4
+
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+<img src="/images/CDV_4.jpg">
+
+```shell
+curl -X POST -F "apikey= " -F "threshold=0.5"
+-F "file=CVD_4.jpg"
+-F "model=41" -F "lang=de" "https://api.raypack.ai/recog"
+
+```
+
+> The above call returns JSON structured like this:
+
+```json
+{
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"Raypack_Face_V4",
+      "modelid":"41",
+      "originalfile":"CVD_4.jpg",
+      "starttime":1545044610981,
+      "endtime":1545044612198,
+      "duration":1.217
+    },
+    "totalfaces": 1,
+    "faces":
+    [
+        {
+            "top":0.23464786,
+            "left":0.37956652,
+            "right":0.8106986,
+            "bottom":0.53359973,
+        }
+    ],
+  }
+}
+```
+
+RAYPACK Face AI v4 is faster and more efficient than the standard Face AI.
+
+
+### HTTP Request
+
+POST `https://apiv3.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+totalfaces | integer | Number of detected faces within the image
+faces | dict |  Bounding box(es) of the detected face(s)
+top | float |  Top left bounding box corner coordinate
+left | float |  Top left bounding box corner coordinate
+right | float |  Bottom right bounding box corner coordinate
+bottom | float |  Bottom right bounding box corner coordinate
 
 ## RAYPACK Demographics Detection
 
@@ -530,7 +613,7 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 }
 ```
 
-RAYPACK Demographics detects clothing items in images. 
+RAYPACK Demographics detects clothing items in images.
 
 
 ### HTTP Request
