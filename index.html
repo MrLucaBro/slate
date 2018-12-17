@@ -242,6 +242,9 @@
                   <li>
                     <a href="#raypack-demographics-detection" class="toc-h2 toc-link" data-title="RAYPACK Demographics Detection">RAYPACK Demographics Detection</a>
                   </li>
+                  <li>
+                    <a href="#raypack-fashion-detection" class="toc-h2 toc-link" data-title="RAYPACK Fashion Detection">RAYPACK Fashion Detection</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1108,6 +1111,150 @@ Here is an example:<br>
 <td>tags</td>
 <td>dict</td>
 <td>Contains Name and confidence of the detected celebrity as well as the location on the image</td>
+</tr>
+</tbody></table>
+<h2 id='raypack-fashion-detection'>RAYPACK Fashion Detection</h2>
+<blockquote>
+<p>The call below requests the analysis of the image given in file and returns a JSON:<br>
+Here is an example:<br>
+<img src="images/fashion.jpg"></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+-F <span class="s2">"file=fashion.jpg"</span>
+-F <span class="s2">"model=6"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
+</code></pre>
+<blockquote>
+<p>The above call returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"Raypack_Clothes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"fashion.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1545042059125</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">154504206115</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">2.034</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Fur Coat"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.79121980"</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Cardigan"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.62127545"</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Turtleneck"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0.50549158"</span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>RAYPACK Demographics detects faces and adds demographic information.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p>POST <code>https://apiv3.raypack.ai/recog</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>-</td>
+<td>Sets the threshold of detection certainty required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code></td>
+</tr>
+<tr>
+<td>lang</td>
+<td>-</td>
+<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-6'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>dict</td>
+<td>Contains Name and confidence of the detected clothing item as well as the location on the image</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
