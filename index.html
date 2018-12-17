@@ -760,19 +760,35 @@ The model can be expanded with any desired celebrity or common person.</p>
 <blockquote>
 <p>The above call returns JSON structured like so:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"RaypackFace"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"https://cvdazzle.com/assets/img/look5r-md.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1545035189345</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1545035195714</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mi">123</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"totalfaces"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.422919750213623</span><span class="p">,</span><span class="w">
     </span><span class="s2">"faces"</span><span class="p">:</span><span class="w">
     </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"xpos"</span><span class="p">:</span><span class="w"> </span><span class="mi">268</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ypos"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">463</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">318</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9999999957373409</span><span class="w">
+            </span><span class="s2">"xpos"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ypos"</span><span class="p">:</span><span class="w"> </span><span class="mi">81</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">216</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9990518015849545</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -850,14 +866,64 @@ Remember — always use your API-key to validate your http request!
 </tr>
 </thead><tbody>
 <tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
 <td>totalfaces</td>
 <td>integer</td>
 <td>Number of detected faces within the image</td>
-</tr>
-<tr>
-<td>time</td>
-<td>float</td>
-<td>Time spent processing the image</td>
 </tr>
 <tr>
 <td>faces</td>
@@ -885,7 +951,7 @@ Remember — always use your API-key to validate your http request!
 <td>Width of the bounding box</td>
 </tr>
 <tr>
-<td>confidence</td>
+<td>score</td>
 <td>float</td>
 <td>Confidence score of the accuracy of the detection</td>
 </tr>
