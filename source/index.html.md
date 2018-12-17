@@ -422,7 +422,8 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 ```json
 {
   "name":"Raypack_AI_Filecontainer",
-  "version":"1.0","license":"commercial",
+  "version":"1.0",
+  "license":"commercial",
   "results":
   {
     "stats":
