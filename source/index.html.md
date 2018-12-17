@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://raypack.ai'>Sign Up for a trial API-key</a>
-  - <a href='https://raypack.ai'>Documentation Version 1.0.1.</a>
+  - <a>Documentation Version 1.0.1.</a>
 
 
 includes:
