@@ -321,19 +321,35 @@ curl -X POST -F "apikey= "
 > The above call returns JSON structured like so:
 
 ```json
+
 {
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"RaypackFace",
+      "modelid":"4",
+      "originalfile":"https://cvdazzle.com/assets/img/look5r-md.jpg",
+      "starttime":1545035189345,
+      "endtime":1545035195714,
+      "duration":123
+    },
     "totalfaces": 1,
     "time": 1.422919750213623,
     "faces":
     [
         {
-            "xpos": 268,
-            "ypos": 102,
-            "width": 463,
-            "height": 318,
-            "score": 0.9999999957373409
+            "xpos": 123,
+            "ypos": 81,
+            "width": 220,
+            "height": 216,
+            "score": 0.9990518015849545
         }
     ]
+  }
 }
 ```
 
@@ -369,14 +385,24 @@ Remember — always use your API-key to validate your http request!
 
 Parameter | Type | Description
 --------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
 totalfaces | integer | Number of detected faces within the image
-time | float | Time spent processing the image
 faces | dict |  Bounding box(es) of the detected face(s)
 xpos | float |  Top left bounding box corner x-coordinate
 ypos | float |  Top left bounding box corner y-coordinate
 height | float |  Height of the bounding box
 width | float |  Width of the bounding box
-confidence | float |  Confidence score of the accuracy of the detection
+score | float |  Confidence score of the accuracy of the detection
 
 ## RAYPACK Demographics Detection
 
