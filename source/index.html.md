@@ -454,7 +454,7 @@ RAYPACK Face AI v4 is faster and more efficient than the standard Face AI.
 
 ### HTTP Request
 
-POST `https://apiv3.raypack.ai/recog`
+POST `https://api.raypack.ai/recog`
 
 ### Query Parameters
 
@@ -544,7 +544,7 @@ RAYPACK Demographics detects faces and adds demographic information.
 
 ### HTTP Request
 
-POST `https://apiv3.raypack.ai/recog`
+POST `https://api.raypack.ai/recog`
 
 ### Query Parameters
 
@@ -623,7 +623,7 @@ RAYPACK Demographics detects clothing items in images.
 
 ### HTTP Request
 
-POST `https://apiv3.raypack.ai/recog`
+POST `https://api.raypack.ai/recog`
 
 ### Query Parameters
 
