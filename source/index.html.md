@@ -649,4 +649,4 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence of the detected clothing item as well as the location on the image
+tags | dict |  Contains Name and confidence of the detected clothing item
