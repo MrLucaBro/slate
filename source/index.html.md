@@ -570,7 +570,11 @@ originalfile | string |  File given to the model in the request
 starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
-tags | dict |  Contains Name and confidence of the detected celebrity as well as the location on the image
+tags | dict |  Contains Name and confidence of the detected characteristics as well as the position of the face in the image.
+top_row | float |  Top left bounding box corner y-coordinate
+left_col | float |  Top left bounding box corner x-coordinate
+bottom_row | float |  Bottom right bounding box corner y-coordinate
+right_col| float |  Bottom right bounding box corner x-coordinate
 
 ## RAYPACK Fashion Detection
 
