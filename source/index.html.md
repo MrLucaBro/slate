@@ -6,6 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://raypack.ai'>Sign Up for a trial API-key</a>
+  - <a href='https://raypack.ai'>Documentation Version 1.0.1.</a>
 
 
 includes:
@@ -143,13 +144,13 @@ tags | dict |  Contains name and confidence value of the detected objects (both 
 
 ## RAYPACK Food Detection
 
-> The call below requests the analysis of the image given in url and returns a JSON:  
+> The call below requests the analysis of the image given in file and returns a JSON:  
 Here is an example:  
-<img src="/images/hawaii.jpg">
+<img src="/images/burger.jpg">
 
 ```shell
 curl -X POST -F "apikey= " -F "threshold=0.9"
--F "url=https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg"
+-F "file=burger.jpg"
 -F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -167,17 +168,17 @@ curl -X POST -F "apikey= " -F "threshold=0.9"
   {
     "modelname":"Raypack_Food",
     "modelid":"2",
-    "originalfile":"https://static.chefkoch-cdn.de/ck.de/rezepte/177/177746/480010-960x720-nudelauflauf-hawaii.jpg",
-    "starttime":1544183968616,
-    "endtime":1544183970545,
-    "duration":1.929
+    "originalfile":"burger.jpg",
+    "starttime":1545033109771,
+    "endtime":1545033112489,
+    "duration":2.718
   },
   "tags":
   [
-    {"name":"pasta","value":"1.00000000"},
-    {"name":"sauce","value":"1.00000000"},
-    {"name":"cheese","value":"1.00000000"},
-    {"name":"macaroni","value":"1.00000000"}
+    {"name":"hamburger","value":"0.97055126"},
+    {"name":"bun","value":"0.94517506"},
+    {"name":"beef","value":"0.91858010"},
+    {"name":"onion","value":"0.91512306"}
   ]
 }
 }
