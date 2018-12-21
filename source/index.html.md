@@ -271,8 +271,7 @@ curl -X POST -F "apikey= " -F "threshold=0.9"
 }
 ```
 
-RAYPACK Celebrity detection US lets you automatically detect the identity of celebrities in videos and images.
-The model can be expanded with any desired celebrity or common person.
+RAYPACK Celebrity Detection US lets you automatically detect the identity of celebrities in videos and images. The model can be expanded with any desired celebrity or common person. It could be used to automate the analysis of archived videos or for the analysis of incoming footage in real time.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -539,7 +538,7 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 }
 ```
 
-RAYPACK Demographics detects faces and adds demographic information.
+RAYPACK Demographics Detection detects faces and adds demographic to each detected face information. It has a number of possible business applications. You could, for instance, use it to automatically derive demographic information about the customers in your store.
 
 
 ### HTTP Request
@@ -618,7 +617,7 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 }
 ```
 
-RAYPACK Demographics detects clothing items in images.
+RAYPACK Fashion Detection finds and categorizes clothing items in images. It gives you a comprehensive list of the clothing items in an image giving you the opportunity to automate processes in e.g. the fashion industry.
 
 
 ### HTTP Request
