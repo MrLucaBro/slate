@@ -60,7 +60,7 @@ These models are:
 6. RAYPACK Fashion Detection
 
 You can connect with the RAYPACK Platform API by sending http requests to our API server `https://api.raypack.ai`.
-You can get an overview over all available models by sending the http request on the right to the endpoint `https://api.raypack.ai/getmodels`. The models themselves are available under the endpoint `https://api.raypack.ai/recog`. In this section we will give detailed examples of how you could use each of our ready-to-deploy models.
+You can get an overview over all available models by sending the http request on the right to the endpoint `https://api.raypack.ai/getmodels`. The models themselves are available under the endpoint `https://api.raypack.ai/recog`. In this section, we will give detailed examples of how you can use each of our ready-to-deploy models.
 
 ## RAYPACK Multi-Object Detection
 
