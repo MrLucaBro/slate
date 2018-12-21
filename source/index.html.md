@@ -27,7 +27,7 @@ Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution 
 
 
 ```shell
-# With shell, you can just pass the correct header with each request.
+# With shell, you can just pass the correct parameter with each request.
 curl -X POST -F "apikey= " ...
 ```
 
