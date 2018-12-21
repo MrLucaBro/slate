@@ -120,7 +120,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
@@ -197,7 +197,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
@@ -283,7 +283,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
@@ -366,7 +366,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
@@ -459,7 +459,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
@@ -549,7 +549,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
@@ -628,7 +628,7 @@ POST `https://api.raypack.ai/recog`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-threshold | - | Sets the threshold of detection certainty required to return an object as detected.
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
 file | - | Lets you specify your input file.
 url | - | Lets you upload your file from the internet without saving it on your system.
 model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
