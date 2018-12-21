@@ -271,7 +271,7 @@ curl -X POST -F "apikey= " -F "threshold=0.9"
 }
 ```
 
-RAYPACK Celebrity Detection US lets you automatically detect the identity of celebrities in videos and images. The model can be expanded with any desired celebrity or common person. It could be used to automate the analysis of archived videos or for the analysis of incoming footage in real time.
+RAYPACK Celebrity Detection US lets you automatically detect the identity of celebrities in videos and images. The model can be expanded with any desired celebrity or common person. It could be used to automate the analysis of archived videos or for processing of incoming footage in real time.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -617,7 +617,7 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 }
 ```
 
-RAYPACK Fashion Detection finds and categorizes clothing items in images. It gives you a comprehensive list of the clothing items in an image providing you with the opportunity to automate processes any process in relation fashion. 
+RAYPACK Fashion Detection finds and categorizes clothing items in images. It gives you a comprehensive list of the clothing items in an image providing you with the opportunity to automate processes any process in relation fashion.
 
 
 ### HTTP Request
