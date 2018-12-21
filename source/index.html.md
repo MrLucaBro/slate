@@ -617,7 +617,7 @@ curl -X POST -F "apikey= " -F "threshold=0.4"
 }
 ```
 
-RAYPACK Fashion Detection finds and categorizes clothing items in images. It gives you a comprehensive list of the clothing items in an image giving you the opportunity to automate processes in e.g. the fashion industry.
+RAYPACK Fashion Detection finds and categorizes clothing items in images. It gives you a comprehensive list of the clothing items in an image providing you with the opportunity to automate processes any process in relation fashion. 
 
 
 ### HTTP Request
