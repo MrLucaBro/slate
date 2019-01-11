@@ -248,6 +248,20 @@
                   <li>
                     <a href="#raypack-fashion-detection" class="toc-h2 toc-link" data-title="RAYPACK Fashion Detection">RAYPACK Fashion Detection</a>
                   </li>
+                  <li>
+                    <a href="#raypack-color-model" class="toc-h2 toc-link" data-title="RAYPACK Color Model">RAYPACK Color Model</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#raypack-vector-based-embedding" class="toc-h1 toc-link" data-title="RAYPACK Vector-based Embedding">RAYPACK Vector-based Embedding</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#raypack-512-vector-embedding" class="toc-h2 toc-link" data-title="RAYPACK 512 Vector Embedding">RAYPACK 512 Vector Embedding</a>
+                  </li>
+                  <li>
+                    <a href="#raypack-2048-vector-embedding" class="toc-h2 toc-link" data-title="RAYPACK 2048 Vector Embedding">RAYPACK 2048 Vector Embedding</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1450,6 +1464,468 @@ Here is an example:<br>
 <td>tags</td>
 <td>dict</td>
 <td>Contains name and confidence of the detected clothing item</td>
+</tr>
+</tbody></table>
+<h2 id='raypack-color-model'>RAYPACK Color Model</h2>
+<blockquote>
+<p>The call below requests the analysis of the image given in file and returns a JSON:<br>
+Here is an example:  </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+-F <span class="s2">"file=fashion.jpg"</span>
+-F <span class="s2">"model=9"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
+</code></pre>
+<blockquote>
+<p>The above call returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"RaypackVector"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"fashion.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1547194952158</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1547194953348</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">1.19</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"colors"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"hex"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"#834c3d"</span><span class="p">,</span><span class="s2">"#05050b"</span><span class="p">,</span><span class="s2">"#b9765e"</span><span class="p">,</span><span class="s2">"#dbc1b5"</span><span class="p">,</span><span class="s2">"#2a1c1e"</span><span class="p">,</span><span class="s2">"#a2604c"</span><span class="p">,</span><span class="s2">"#5d352b"</span><span class="p">,</span><span class="s2">"#cb937e"</span><span class="p">,</span><span class="s2">"#6c7e99"</span><span class="p">,</span><span class="s2">"#3b4058"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"names"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"sienna"</span><span class="p">,</span><span class="s2">"black"</span><span class="p">,</span><span class="s2">"indianred"</span><span class="p">,</span><span class="s2">"silver"</span><span class="p">,</span><span class="s2">"black"</span><span class="p">,</span><span class="s2">"sienna"</span><span class="p">,</span><span class="s2">"saddlebrown"</span><span class="p">,</span><span class="s2">"rosybrown"</span><span class="p">,</span><span class="s2">"slategrey"</span><span class="p">,</span><span class="s2">"darkslategray"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"percent"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="mf">9.91</span><span class="p">,</span><span class="mf">40.02</span><span class="p">,</span><span class="mf">10.68</span><span class="p">,</span><span class="mf">3.27</span><span class="p">,</span><span class="mf">6.55</span><span class="p">,</span><span class="mf">13.26</span><span class="p">,</span><span class="mf">6.37</span><span class="p">,</span><span class="mf">6.63</span><span class="p">,</span><span class="mf">1.03</span><span class="p">,</span><span class="mf">2.28</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The RAYPACK Color Model analyses the colors that make up an image and returns a hexadecimal value, name and percentage for each. When combined with other models, such as RAYPACK Fashion Detection, it is able to generate insights about the color of detected objects and increases the flexibility and value of your inference.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>-</td>
+<td>Sets the threshold of detection confidence required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code> etc.</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>-</td>
+<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-8'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>colors</td>
+<td>dict</td>
+<td>Contains model results</td>
+</tr>
+<tr>
+<td>hex</td>
+<td>list</td>
+<td>Contains hexadecimal values as strings</td>
+</tr>
+<tr>
+<td>names</td>
+<td>list</td>
+<td>Contains the names of the colors within the image as strings</td>
+</tr>
+<tr>
+<td>percent</td>
+<td>list</td>
+<td>Contains contribution percentage for each color as floats</td>
+</tr>
+</tbody></table>
+<h1 id='raypack-vector-based-embedding'>RAYPACK Vector-based Embedding</h1>
+<p>In addition to our ready-to-deploy models we offer vector-based encoding of images to facililate your database operations.
+Our models encode images into vectors increasing the speed with which image matching and other operations can be accomplished.
+Currently two versions are available:</p>
+
+<ol>
+<li>512 Vector Embedding</li>
+<li>2048 Vector Embedding</li>
+</ol>
+<h2 id='raypack-512-vector-embedding'>RAYPACK 512 Vector Embedding</h2>
+<blockquote>
+<p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
+Here is an example:  </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+-F <span class="s2">"file=fashion.jpg"</span>
+-F <span class="s2">"model=7"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
+</code></pre>
+<blockquote>
+<p>The above call returns JSON structured containing the 512 element vector
+representation produced by the model.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"RaypackVector"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"fashion.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1546872010419</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1546872010656</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">0.237</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"vector"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.782311201095581</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>The RAYPACK 512 Vector Embedding returns a vector representation of a given image that can be stored in databases. It reduces the memory space needed to store the images and facilitates operations such as image comparisons. The 512 Vector embedding trades off some detail in the representation for less memory usage compared to the more detailed 2048 Vector Embedding model. However, even a less detailed representations enable highly accurate and fast performance.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>-</td>
+<td>Sets the threshold of detection confidence required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code> etc.</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>-</td>
+<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-9'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>vector</td>
+<td>list</td>
+<td>Contains vector representation of the processed image</td>
+</tr>
+</tbody></table>
+<h2 id='raypack-2048-vector-embedding'>RAYPACK 2048 Vector Embedding</h2>
+<blockquote>
+<p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
+The process is very similar to the 512 Vector Embedding:  </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+-F <span class="s2">"file=fashion.jpg"</span>
+-F <span class="s2">"model=8"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
+</code></pre>
+<blockquote>
+<p>The above call returns JSON structured containing the 2048 element vector
+representation produced by the model.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"RaypackVector"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"fashion.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1546872690402</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1546872691363</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">0.961</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"vector"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.24560748040676117</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still reducing used memory space. This is especially interesting in area of face recognition and identification in large databases.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>-</td>
+<td>Sets the threshold of detection confidence required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code> etc.</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>-</td>
+<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-10'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>vector</td>
+<td>list</td>
+<td>Contains vector representation of the processed image</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
