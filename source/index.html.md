@@ -650,3 +650,241 @@ starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
 tags | dict |  Contains name and confidence of the detected clothing item
+
+## RAYPACK Color Model
+
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+
+```shell
+curl -X POST -F "apikey= " -F "threshold=0.4"
+-F "file=fashion.jpg"
+-F "model=9" -F "lang=de" "https://api.raypack.ai/recog"
+
+```
+
+> The above call returns JSON structured like this:
+
+```json
+{
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"RaypackVector",
+      "modelid":"9",
+      "originalfile":"fashion.jpg",
+      "starttime":1547194952158,
+      "endtime":1547194953348,
+      "duration":1.19
+    },
+    "colors":
+    {
+      "hex":
+      [
+        "#834c3d","#05050b","#b9765e","#dbc1b5","#2a1c1e","#a2604c","#5d352b","#cb937e","#6c7e99","#3b4058"
+      ],
+      "names":
+      [
+        "sienna","black","indianred","silver","black","sienna","saddlebrown","rosybrown","slategrey","darkslategray"
+      ],
+      "percent":
+      [
+        9.91,40.02,10.68,3.27,6.55,13.26,6.37,6.63,1.03,2.28
+      ]
+    }
+  }
+}
+```
+
+The RAYPACK Color Model analyses the colors that make up an image and returns a hexadecimal value, name and percentage for each. When combined with other models, such as RAYPACK Fashion Detection, it is able to generate insights about the color of detected objects and increases the flexibility and value of your inference.
+
+### HTTP Request
+
+POST `https://api.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5` etc.
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+colors | dict |  Contains model results
+hex | list | Contains hexadecimal values as strings
+names | list | Contains the names of the colors within the image as strings
+percent | list | Contains contribution percentage for each color as floats
+
+
+# RAYPACK Vector-based Embedding
+
+In addition to our ready-to-deploy models we offer vector-based encoding of images to facililate your database operations.
+Our models encode images into vectors increasing the speed with which image matching and other operations can be accomplished.
+Currently two versions are available:
+
+1. 512 Vector Embedding
+2. 2048 Vector Embedding
+
+## RAYPACK 512 Vector Embedding
+
+> The call below requests the vectorization of the image given in file and returns a JSON.  
+Here is an example:  
+
+```shell
+curl -X POST -F "apikey= " -F "threshold=0.4"
+-F "file=fashion.jpg"
+-F "model=7" -F "lang=de" "https://api.raypack.ai/recog"
+
+```
+
+> The above call returns JSON structured containing the 512 element vector
+representation produced by the model.
+
+```json
+{
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"RaypackVector",
+      "modelid":"7",
+      "originalfile":"fashion.jpg",
+      "starttime":1546872010419,
+      "endtime":1546872010656,
+      "duration":0.237
+    },
+    "vector":
+    [
+      0.782311201095581, ...
+    ]
+  }
+}
+
+```
+The RAYPACK 512 Vector Embedding returns a vector representation of a given image that can be stored in databases. It reduces the memory space needed to store the images and facilitates operations such as image comparisons. The 512 Vector embedding trades off some detail in the representation for less memory usage compared to the more detailed 2048 Vector Embedding model. However, even a less detailed representations enable highly accurate and fast performance.
+
+### HTTP Request
+
+POST `https://api.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5` etc.
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+vector| list |  Contains vector representation of the processed image
+
+## RAYPACK 2048 Vector Embedding
+
+> The call below requests the vectorization of the image given in file and returns a JSON.  
+The process is very similar to the 512 Vector Embedding:  
+
+```shell
+curl -X POST -F "apikey= " -F "threshold=0.4"
+-F "file=fashion.jpg"
+-F "model=8" -F "lang=de" "https://api.raypack.ai/recog"
+
+```
+> The above call returns JSON structured containing the 2048 element vector
+representation produced by the model.
+
+```json
+{
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"RaypackVector",
+      "modelid":"8",
+      "originalfile":"fashion.jpg",
+      "starttime":1546872690402,
+      "endtime":1546872691363,
+      "duration":0.961
+    },
+    "vector":
+    [
+      0.24560748040676117, ...
+    ]
+  }
+}
+
+```
+The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still reducing used memory space. This is especially interesting in area of face recognition and identification in large databases.
+
+### HTTP Request
+
+POST `https://api.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5` etc.
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+vector| list |  Contains vector representation of the processed image
