@@ -231,6 +231,9 @@
                     <a href="#raypack-multi-object-detection" class="toc-h2 toc-link" data-title="RAYPACK Multi-Object Detection">RAYPACK Multi-Object Detection</a>
                   </li>
                   <li>
+                    <a href="#raypack-multi-object-localization" class="toc-h2 toc-link" data-title="RAYPACK Multi-Object Localization">RAYPACK Multi-Object Localization</a>
+                  </li>
+                  <li>
                     <a href="#raypack-food-detection" class="toc-h2 toc-link" data-title="RAYPACK Food Detection">RAYPACK Food Detection</a>
                   </li>
                   <li>
@@ -240,7 +243,7 @@
                     <a href="#raypack-face-ai" class="toc-h2 toc-link" data-title="RAYPACK Face AI">RAYPACK Face AI</a>
                   </li>
                   <li>
-                    <a href="#raypack-face-ai-v4" class="toc-h2 toc-link" data-title="RAYPACK Face AI v4">RAYPACK Face AI v4</a>
+                    <a href="#raypack-face-ai-fast" class="toc-h2 toc-link" data-title="RAYPACK Face AI fast">RAYPACK Face AI fast</a>
                   </li>
                   <li>
                     <a href="#raypack-demographics-detection" class="toc-h2 toc-link" data-title="RAYPACK Demographics Detection">RAYPACK Demographics Detection</a>
@@ -269,7 +272,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://raypack.ai'>Sign Up for a trial API-key</a></li>
+            <li><a href='https://raypack.ai/trial-api-key/'>Sign Up for a trial API-key</a></li>
             <li><a>Documentation Version 1.0.1.</a></li>
         </ul>
     </div>
@@ -465,6 +468,163 @@ Here is an example:<br>
 <td>Contains name and confidence value of the detected objects (both strings)</td>
 </tr>
 </tbody></table>
+<h2 id='raypack-multi-object-localization'>RAYPACK Multi-Object Localization</h2>
+<blockquote>
+<p>The call below requests the analysis of the image given in file and returns a JSON:<br>
+Here is an example:<br>
+<img src="images/rawpixel-645294-unsplash.jpg"></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.5"</span>
+-F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span>
+-F <span class="s2">"model=10"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
+</code></pre>
+<blockquote>
+<p>The above call returns a JSON like so:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"Raypack_Object"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"rawpixel-645294-unsplash.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1548055347119</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1548055347589</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">0.47</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Laptop"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="mf">0.8682193</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:[{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.680901</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.321802</span><span class="p">},{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.9990991</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.321802</span><span class="p">},{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.9990991</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.96055114</span><span class="p">},{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.680901</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.96055114</span><span class="p">}]},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Computer keyboard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="mf">0.6041973</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:[{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.680901</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.321802</span><span class="p">},{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.9990991</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.321802</span><span class="p">},{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.9990991</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.96055114</span><span class="p">},{</span><span class="s2">"x"</span><span class="p">:</span><span class="mf">0.680901</span><span class="p">,</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.96055114</span><span class="p">}]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>RAYPACK Multi-Object Localization has all the advantages of the Multi-Object Detection model. In addition it provides precise localization of the detected objects within a picture, allowing users to track objects through consecutive frames or to define regions of interest.</p>
+
+<aside class="warning">Videos are not supported yet.</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>-</td>
+<td>Sets the threshold of detection confidence required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code></td>
+</tr>
+<tr>
+<td>lang</td>
+<td>-</td>
+<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-2'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>dict</td>
+<td>Contains name and confidence score of the detected objects as well as their location.</td>
+</tr>
+<tr>
+<td>position</td>
+<td>list</td>
+<td>Contains x and y coordinates of top, bottom, left and right (in this order) corners of the bounding box containing the detected object.</td>
+</tr>
+</tbody></table>
 <h2 id='raypack-food-detection'>RAYPACK Food Detection</h2>
 <blockquote>
 <p>The call below requests the analysis of the image given in file and returns a JSON:<br>
@@ -507,9 +667,9 @@ Here is an example:<br>
 <p>RAYPACK Food Detection is a ready-to-deploy AI model, that enables detection of foods. It can be used to detect many different classes of foods and can be expanded upon request.</p>
 
 <aside class="warning">Videos are not supported yet.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -543,7 +703,7 @@ Here is an example:<br>
 <td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='json-response-schema-2'>JSON response schema</h3>
+<h3 id='json-response-schema-3'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -663,9 +823,9 @@ Here is an example:<br>
 <p>RAYPACK Celebrity Detection US lets you automatically detect the identity of celebrities in videos and images. The model can be expanded with any desired celebrity or common person. It could be used to automate the analysis of archived videos or for processing of incoming footage in real time.</p>
 
 <aside class="warning">Videos are not supported yet.</aside>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -699,7 +859,7 @@ Here is an example:<br>
 <td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='json-response-schema-3'>JSON response schema</h3>
+<h3 id='json-response-schema-4'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -773,9 +933,8 @@ Here is an example:<br>
 <p>The call below requests the analysis of the image in url and returns the results as a JSON or JPEG:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span>
--F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"url=https://cvdazzle.com/assets/img/look5r-md.jpg"</span>
+-F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"url=https://cvdazzle.com/assets/img/look5r-md.jpg"</span> -F <span class="s2">"model=4"</span>
 -F <span class="s2">"mode=json"</span> -F <span class="s2">"facemode=default"</span> -F <span class="s2">"hex=00ff00"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
-
 </code></pre>
 <blockquote>
 <p>The above call returns JSON structured like so:</p>
@@ -816,9 +975,9 @@ Here is an example:<br>
 </blockquote>
 
 <p>RAYPACK Face AI is a ready-to-deploy AI model, that enables detection as well as identification of faces. Its unprecedented performance in a broad range of difficult conditions, including massive occlusion of faces, and large crowds, makes RAYPACK Face AI an accurate and versatile tool for commercial face detection.   </p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -876,7 +1035,7 @@ Here is an example:<br>
 <aside class="success">
 Remember — always use your API-key to validate your http request!
 </aside>
-<h3 id='json-response-schema-4'>JSON response schema</h3>
+<h3 id='json-response-schema-5'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -975,7 +1134,7 @@ Remember — always use your API-key to validate your http request!
 <td>Confidence score of the accuracy of the detection</td>
 </tr>
 </tbody></table>
-<h2 id='raypack-face-ai-v4'>RAYPACK Face AI v4</h2>
+<h2 id='raypack-face-ai-fast'>RAYPACK Face AI fast</h2>
 <blockquote>
 <p>The call below requests the analysis of the image given in file and returns a JSON:<br>
 Here is an example:<br>
@@ -1017,10 +1176,10 @@ Here is an example:<br>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>RAYPACK Face AI v4 is faster and more efficient than the standard Face AI.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<p>RAYPACK Face AI fast is faster and more efficient than the standard Face AI. The increas in efficiency and speed don&#39;t decrease performance.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1054,7 +1213,7 @@ Here is an example:<br>
 <td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='json-response-schema-5'>JSON response schema</h3>
+<h3 id='json-response-schema-6'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1197,9 +1356,9 @@ Here is an example:<br>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>RAYPACK Demographics Detection detects faces and adds demographic to each detected face information. It has a number of possible business applications. You could, for instance, use it to automatically derive demographic information about the customers in your store.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1233,7 +1392,7 @@ Here is an example:<br>
 <td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='json-response-schema-6'>JSON response schema</h3>
+<h3 id='json-response-schema-7'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1361,9 +1520,9 @@ Here is an example:<br>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>RAYPACK Fashion Detection finds and categorizes clothing items in images. It gives you a comprehensive list of the clothing items in an image providing you with the opportunity to automate processes any process in relation fashion.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1397,7 +1556,7 @@ Here is an example:<br>
 <td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='json-response-schema-7'>JSON response schema</h3>
+<h3 id='json-response-schema-8'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1513,9 +1672,9 @@ Here is an example:  </p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>The RAYPACK Color Model analyses the colors that make up an image and returns a hexadecimal value, name and percentage for each. When combined with other models, such as RAYPACK Fashion Detection, it is able to generate insights about the color of detected objects and increases the flexibility and value of your inference.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1549,7 +1708,7 @@ Here is an example:  </p>
 <td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='json-response-schema-8'>JSON response schema</h3>
+<h3 id='json-response-schema-9'>JSON response schema</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1673,156 +1832,13 @@ representation produced by the model.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"vector"</span><span class="p">:</span><span class="w">
     </span><span class="p">[</span><span class="w">
-      </span><span class="mf">0.782311201095581</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w">
+      </span><span class="mf">0.6352465748786926</span><span class="p">,</span><span class="mf">2.296454429626465</span><span class="p">,</span><span class="mf">0.3659933805465698</span><span class="p">,</span><span class="mf">0.09472954273223877</span><span class="p">,</span><span class="mf">0.20474199950695038</span><span class="p">,</span><span class="mf">1.5770865678787231</span><span class="p">,</span><span class="mf">0.31255221366882324</span><span class="p">,</span><span class="mf">0.9102488160133362</span><span class="p">,</span><span class="mf">2.3947975635528564</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6517073512077332</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p>The RAYPACK 512 Vector Embedding returns a vector representation of a given image that can be stored in databases. It reduces the memory space needed to store the images and facilitates operations such as image comparisons. The 512 Vector embedding trades off some detail in the representation for less memory usage compared to the more detailed 2048 Vector Embedding model. However, even a less detailed representations enable highly accurate and fast performance.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p>POST <code>https://api.raypack.ai/recog</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>threshold</td>
-<td>-</td>
-<td>Sets the threshold of detection confidence required to return an object as detected.</td>
-</tr>
-<tr>
-<td>file</td>
-<td>-</td>
-<td>Lets you specify your input file.</td>
-</tr>
-<tr>
-<td>url</td>
-<td>-</td>
-<td>Lets you upload your file from the internet without saving it on your system.</td>
-</tr>
-<tr>
-<td>model</td>
-<td>-</td>
-<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code> etc.</td>
-</tr>
-<tr>
-<td>lang</td>
-<td>-</td>
-<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
-</tr>
-</tbody></table>
-<h3 id='json-response-schema-9'>JSON response schema</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Name of the response</td>
-</tr>
-<tr>
-<td>version</td>
-<td>float</td>
-<td>Version of the response container</td>
-</tr>
-<tr>
-<td>license</td>
-<td>string</td>
-<td>Type of the purchased API-key</td>
-</tr>
-<tr>
-<td>results</td>
-<td>dict</td>
-<td>Contains the results of the analysis in stats and tags</td>
-</tr>
-<tr>
-<td>stats</td>
-<td>dict</td>
-<td>Contains model statistics</td>
-</tr>
-<tr>
-<td>modelname</td>
-<td>string</td>
-<td>Name of the model used</td>
-</tr>
-<tr>
-<td>modelid</td>
-<td>string</td>
-<td>Internal model identifier</td>
-</tr>
-<tr>
-<td>originalfile</td>
-<td>string</td>
-<td>File given to the model in the request</td>
-</tr>
-<tr>
-<td>starttime</td>
-<td>float</td>
-<td>System time of the start of model execution</td>
-</tr>
-<tr>
-<td>endtime</td>
-<td>float</td>
-<td>System time of the end of the calculation</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>float</td>
-<td>Processing time</td>
-</tr>
-<tr>
-<td>vector</td>
-<td>list</td>
-<td>Contains vector representation of the processed image</td>
-</tr>
-</tbody></table>
-<h2 id='raypack-2048-vector-embedding'>RAYPACK 2048 Vector Embedding</h2>
-<blockquote>
-<p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
-The process is very similar to the 512 Vector Embedding:  </p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
--F <span class="s2">"file=fashion.jpg"</span>
--F <span class="s2">"model=8"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
-
-</code></pre>
-<blockquote>
-<p>The above call returns JSON structured containing the 2048 element vector
-representation produced by the model.</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"RaypackVector"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"fashion.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1546872690402</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1546872691363</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">0.961</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"vector"</span><span class="p">:</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="mf">0.24560748040676117</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still reducing used memory space. This is especially interesting in area of face recognition and identification in large databases.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
@@ -1928,6 +1944,149 @@ representation produced by the model.</p>
 <td>Contains vector representation of the processed image</td>
 </tr>
 </tbody></table>
+<h2 id='raypack-2048-vector-embedding'>RAYPACK 2048 Vector Embedding</h2>
+<blockquote>
+<p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
+The process is very similar to the 512 Vector Embedding:  </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+-F <span class="s2">"file=fashion.jpg"</span>
+-F <span class="s2">"model=8"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
+</code></pre>
+<blockquote>
+<p>The above call returns JSON structured containing the 2048 element vector
+representation produced by the model.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Raypack_AI_Filecontainer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="s2">"commercial"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"modelname"</span><span class="p">:</span><span class="s2">"RaypackVector"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modelid"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"originalfile"</span><span class="p">:</span><span class="s2">"fashion.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="mi">1546872690402</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="mi">1546872691363</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">0.961</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"vector"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.3076409101486206</span><span class="p">,</span><span class="mf">1.4681082963943481</span><span class="p">,</span><span class="mf">0.5565540790557861</span><span class="p">,</span><span class="mf">0.3580729067325592</span><span class="p">,</span><span class="mf">0.3559722602367401</span><span class="p">,</span><span class="mf">0.3806714713573456</span><span class="p">,</span><span class="mf">0.8307628035545349</span><span class="p">,</span><span class="mf">3.998251438140869</span><span class="p">,</span><span class="mf">0.17733852565288544</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="mf">0.050893161445856094</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still reducing used memory space. This is especially interesting in area of face recognition and identification in large databases.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p>POST <code>https://api.raypack.ai/recog</code></p>
+<h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>threshold</td>
+<td>-</td>
+<td>Sets the threshold of detection confidence required to return an object as detected.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>-</td>
+<td>Lets you specify your input file.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>-</td>
+<td>Lets you upload your file from the internet without saving it on your system.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>-</td>
+<td>Indicates which model you want to use. Multi-Object <code>model=1</code>, Food <code>model=2</code>, Celebrity US <code>model=3</code>, Face AI <code>model=4</code>, Demographics <code>model=5</code> etc.</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>-</td>
+<td>Language of the output. You can choose between English <code>lang=en</code> or German <code>lang=de</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='json-response-schema-11'>JSON response schema</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the response</td>
+</tr>
+<tr>
+<td>version</td>
+<td>float</td>
+<td>Version of the response container</td>
+</tr>
+<tr>
+<td>license</td>
+<td>string</td>
+<td>Type of the purchased API-key</td>
+</tr>
+<tr>
+<td>results</td>
+<td>dict</td>
+<td>Contains the results of the analysis in stats and tags</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>dict</td>
+<td>Contains model statistics</td>
+</tr>
+<tr>
+<td>modelname</td>
+<td>string</td>
+<td>Name of the model used</td>
+</tr>
+<tr>
+<td>modelid</td>
+<td>string</td>
+<td>Internal model identifier</td>
+</tr>
+<tr>
+<td>originalfile</td>
+<td>string</td>
+<td>File given to the model in the request</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>float</td>
+<td>System time of the start of model execution</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>float</td>
+<td>System time of the end of the calculation</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Processing time</td>
+</tr>
+<tr>
+<td>vector</td>
+<td>list</td>
+<td>Contains vector representation of the processed image</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 Here is how to interpret errors you might encounter. <code>error</code>. Errors below are no reason for panic.
@@ -1942,44 +2101,40 @@ Here is how to interpret errors you might encounter. <code>error</code>. Errors 
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The model requested is for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified model could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a model with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json or jpeg.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The model requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re running too many models at once! Slow down!</td>
+<td>200</td>
+<td>Upload successful -- Your file was uploaded successfully.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Forbidden -- There is a problem with your API key.</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Invalid key format -- Please check the format of your key.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Internal server error -- There has been a problem with our server. Please contact us for further support.</td>
+</tr>
+<tr>
+<td>505</td>
+<td>No api keys -- Your requests have been used up. Please purchase additional requests.</td>
+</tr>
+<tr>
+<td>506</td>
+<td>Invalid model ID -- The model ID in your request is invalid.</td>
+</tr>
+<tr>
+<td>507</td>
+<td>Model Response error --</td>
+</tr>
+<tr>
+<td>508</td>
+<td>Model returns no data -- Please check if the file you uploaded is correct.</td>
 </tr>
 </tbody></table>
 
