@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://raypack.ai'>Sign Up for a trial API-key</a>
+  - <a href='https://raypack.ai/trial-api-key/'>Sign Up for a trial API-key</a>
   - <a>Documentation Version 1.0.1.</a>
 
 
@@ -142,6 +142,88 @@ starttime | float |  System time of the start of model execution
 endtime | float |  System time of the end of the calculation
 duration | float |  Processing time
 tags | dict |  Contains name and confidence value of the detected objects (both strings)
+
+## RAYPACK Multi-Object Localization
+> The call below requests the analysis of the image given in file and returns a JSON:  
+Here is an example:  
+<img src="/images/rawpixel-645294-unsplash.jpg">
+
+```shell
+curl -X POST -F "apikey= " -F "threshold=0.5"
+-F "file=rawpixel-645294-unsplash.jpg"
+-F "model=10" -F "lang=de" "https://api.raypack.ai/recog"
+
+```
+
+> The above call returns a JSON like so:
+
+```json
+{
+  "name":"Raypack_AI_Filecontainer",
+  "version":"1.0",
+  "license":"commercial",
+  "results":
+  {
+    "stats":
+    {
+      "modelname":"Raypack_Object",
+      "modelid":"10",
+      "originalfile":"rawpixel-645294-unsplash.jpg",
+      "starttime":1548055347119,
+      "endtime":1548055347589,
+      "duration":0.47
+    },
+    "tags":
+    [
+      {
+        "name":"Laptop",
+        "score":0.8682193,
+        "position":[{"x":0.680901,"y":0.321802},{"x":0.9990991,"y":0.321802},{"x":0.9990991,"y":0.96055114},{"x":0.680901,"y":0.96055114}]},
+      {
+        "name":"Computer keyboard",
+        "score":0.6041973,
+        "position":[{"x":0.680901,"y":0.321802},{"x":0.9990991,"y":0.321802},{"x":0.9990991,"y":0.96055114},{"x":0.680901,"y":0.96055114}]
+      }
+    ]
+  }
+}
+```
+
+RAYPACK Multi-Object Localization has all the advantages of the Multi-Object Detection model. In addition it provides precise localization of the detected objects within a picture, allowing users to track objects through consecutive frames or to define regions of interest.
+
+<aside class="warning">Videos are not supported yet.</aside>
+
+### HTTP Request
+
+POST `https://api.raypack.ai/recog`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+threshold | - | Sets the threshold of detection confidence required to return an object as detected.
+file | - | Lets you specify your input file.
+url | - | Lets you upload your file from the internet without saving it on your system.
+model | - | Indicates which model you want to use. Multi-Object `model=1`, Food `model=2`, Celebrity US `model=3`, Face AI `model=4`, Demographics `model=5`
+lang | - | Language of the output. You can choose between English `lang=en` or German `lang=de`.
+
+### JSON response schema
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | Name of the response
+version | float | Version of the response container
+license | string |  Type of the purchased API-key
+results | dict |  Contains the results of the analysis in stats and tags
+stats | dict |  Contains model statistics
+modelname | string |  Name of the model used
+modelid | string |  Internal model identifier
+originalfile | string |  File given to the model in the request
+starttime | float |  System time of the start of model execution
+endtime | float |  System time of the end of the calculation
+duration | float |  Processing time
+tags | dict |  Contains name and confidence score of the detected objects as well as their location.
+position | list |  Contains x and y coordinates of top, bottom, left and right (in this order) corners of the bounding box containing the detected object.
 
 ## RAYPACK Food Detection
 
@@ -312,9 +394,8 @@ tags | dict |  Contains name and confidence value of the detected celebrity as w
 
 ```shell
 curl -X POST -F "apikey= "
--F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg"
+-F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg" -F "model=4"
 -F "mode=json" -F "facemode=default" -F "hex=00ff00" "https://api.raypack.ai/recog"
-
 ```
 
 
@@ -403,7 +484,7 @@ height | float |  Height of the bounding box
 width | float |  Width of the bounding box
 score | float |  Confidence score of the accuracy of the detection
 
-## RAYPACK Face AI v4
+## RAYPACK Face AI fast
 
 > The call below requests the analysis of the image given in file and returns a JSON:  
 Here is an example:  
@@ -448,7 +529,7 @@ curl -X POST -F "apikey= " -F "threshold=0.5"
 }
 ```
 
-RAYPACK Face AI v4 is faster and more efficient than the standard Face AI.
+RAYPACK Face AI fast is faster and more efficient than the standard Face AI. The increas in efficiency and speed don't decrease performance.
 
 
 ### HTTP Request
@@ -779,7 +860,7 @@ representation produced by the model.
     },
     "vector":
     [
-      0.782311201095581, ...
+      0.6352465748786926,2.296454429626465,0.3659933805465698,0.09472954273223877,0.20474199950695038,1.5770865678787231,0.31255221366882324,0.9102488160133362,2.3947975635528564, ..., 0.6517073512077332
     ]
   }
 }
@@ -850,7 +931,7 @@ representation produced by the model.
     },
     "vector":
     [
-      0.24560748040676117, ...
+      0.3076409101486206,1.4681082963943481,0.5565540790557861,0.3580729067325592,0.3559722602367401,0.3806714713573456,0.8307628035545349,3.998251438140869,0.17733852565288544, ..., 0.050893161445856094
     ]
   }
 }
