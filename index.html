@@ -273,7 +273,7 @@
       </ul>
         <ul class="toc-footer">
             <li><a href='https://raypack.ai/trial-api-key/'>Sign Up for a trial API-key</a></li>
-            <li><a>Documentation Version 1.0.1.</a></li>
+            <li><a>Documentation Version 1.1.0.</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -286,7 +286,7 @@
 <p>To authorize, use your API-key in the blank space after &#39;apikey=&#39;in every request you send:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct parameter with each request.</span>
-curl -X POST -F <span class="s2">"apikey= "</span> ...
+curl -X POST -F <span class="s2">"apikey=****"</span> ...
 </code></pre>
 <p>Our platform uses API-keys to allow access to the API. You can register for a trial key at our <a href="http://raypack.ai">homepage</a>.</p>
 
@@ -323,10 +323,9 @@ You can get an overview over all available models by sending the http request on
 Here is an example:<br>
 <img src="images/rawpixel-645294-unsplash.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.9"</span>
--F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span> <span class="se">\</span>
+-F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
-
 </code></pre>
 <blockquote>
 <p>The above call returns a JSON like so:</p>
@@ -474,8 +473,8 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/rawpixel-645294-unsplash.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.5"</span>
--F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.5"</span> <span class="se">\</span>
+-F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=10"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -512,7 +511,7 @@ Here is an example:<br>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>RAYPACK Multi-Object Localization has all the advantages of the Multi-Object Detection model. In addition it provides precise localization of the detected objects within a picture, allowing users to track objects through consecutive frames or to define regions of interest.</p>
+<p>The RAYPACK Multi-Object Localization model comes with all the advantages of the RAYPACK Multi-Object Detection model. In addition it provides precise localization of the detected objects within a picture, allowing users to track objects through consecutive frames or to define regions of interest.</p>
 
 <aside class="warning">Videos are not supported yet.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -631,7 +630,7 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/burger.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.9"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span>
 -F <span class="s2">"file=burger.jpg"</span>
 -F <span class="s2">"model=2"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -778,7 +777,7 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/Brad_Pitt_at_Incirlik2.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.9"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span>
 -F <span class="s2">"file=Brad_Pitt_at_Incirlik2.jpg"</span>
 -F <span class="s2">"model=3"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -932,7 +931,7 @@ Here is an example:<br>
 <blockquote>
 <p>The call below requests the analysis of the image in url and returns the results as a JSON or JPEG:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span>
 -F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"url=https://cvdazzle.com/assets/img/look5r-md.jpg"</span> -F <span class="s2">"model=4"</span>
 -F <span class="s2">"mode=json"</span> -F <span class="s2">"facemode=default"</span> -F <span class="s2">"hex=00ff00"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 </code></pre>
@@ -1140,7 +1139,7 @@ Remember — always use your API-key to validate your http request!
 Here is an example:<br>
 <img src="images/CVD_4.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.5"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.5"</span>
 -F <span class="s2">"file=CVD_4.jpg"</span>
 -F <span class="s2">"model=41"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -1313,7 +1312,7 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/ki.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
 -F <span class="s2">"file=ki.jpg"</span>
 -F <span class="s2">"model=5"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -1487,7 +1486,7 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/fashion.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
 -F <span class="s2">"file=fashion.jpg"</span>
 -F <span class="s2">"model=6"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -1630,7 +1629,7 @@ Here is an example:<br>
 <p>The call below requests the analysis of the image given in file and returns a JSON:<br>
 Here is an example:  </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
 -F <span class="s2">"file=fashion.jpg"</span>
 -F <span class="s2">"model=9"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -1806,7 +1805,7 @@ Currently two versions are available:</p>
 <p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
 Here is an example:  </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
 -F <span class="s2">"file=fashion.jpg"</span>
 -F <span class="s2">"model=7"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
@@ -1949,7 +1948,7 @@ representation produced by the model.</p>
 <p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
 The process is very similar to the 512 Vector Embedding:  </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey= "</span> -F <span class="s2">"threshold=0.4"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
 -F <span class="s2">"file=fashion.jpg"</span>
 -F <span class="s2">"model=8"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
