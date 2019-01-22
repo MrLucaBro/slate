@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://raypack.ai/trial-api-key/'>Sign Up for a trial API-key</a>
-  - <a>Documentation Version 1.0.1.</a>
+  - <a>Documentation Version 1.1.0.</a>
 
 
 includes:
@@ -28,7 +28,7 @@ Welcome to the RAYPACK AI Platform. Our platform is a fully integrated solution 
 
 ```shell
 # With shell, you can just pass the correct parameter with each request.
-curl -X POST -F "apikey= " ...
+curl -X POST -F "apikey=****" ...
 ```
 
 
@@ -69,10 +69,9 @@ Here is an example:
 <img src="/images/rawpixel-645294-unsplash.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.9"
--F "file=rawpixel-645294-unsplash.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.9" \
+-F "file=rawpixel-645294-unsplash.jpg" \
 -F "model=1" -F "lang=de" "https://api.raypack.ai/recog"
-
 ```
 
 > The above call returns a JSON like so:
@@ -149,8 +148,8 @@ Here is an example:
 <img src="/images/rawpixel-645294-unsplash.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.5"
--F "file=rawpixel-645294-unsplash.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.5" \
+-F "file=rawpixel-645294-unsplash.jpg" \
 -F "model=10" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -189,7 +188,7 @@ curl -X POST -F "apikey= " -F "threshold=0.5"
 }
 ```
 
-RAYPACK Multi-Object Localization has all the advantages of the Multi-Object Detection model. In addition it provides precise localization of the detected objects within a picture, allowing users to track objects through consecutive frames or to define regions of interest.
+The RAYPACK Multi-Object Localization model comes with all the advantages of the RAYPACK Multi-Object Detection model. In addition it provides precise localization of the detected objects within a picture, allowing users to track objects through consecutive frames or to define regions of interest.
 
 <aside class="warning">Videos are not supported yet.</aside>
 
@@ -232,7 +231,7 @@ Here is an example:
 <img src="/images/burger.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.9"
+curl -X POST -F "apikey=****" -F "threshold=0.9"
 -F "file=burger.jpg"
 -F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -309,7 +308,7 @@ Here is an example:
 <img src="/images/Brad_Pitt_at_Incirlik2.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.9"
+curl -X POST -F "apikey=****" -F "threshold=0.9"
 -F "file=Brad_Pitt_at_Incirlik2.jpg"
 -F "model=3" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -393,7 +392,7 @@ tags | dict |  Contains name and confidence value of the detected celebrity as w
 > The call below requests the analysis of the image in url and returns the results as a JSON or JPEG:
 
 ```shell
-curl -X POST -F "apikey= "
+curl -X POST -F "apikey=****"
 -F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg" -F "model=4"
 -F "mode=json" -F "facemode=default" -F "hex=00ff00" "https://api.raypack.ai/recog"
 ```
@@ -491,7 +490,7 @@ Here is an example:
 <img src="/images/CVD_4.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.5"
+curl -X POST -F "apikey=****" -F "threshold=0.5"
 -F "file=CVD_4.jpg"
 -F "model=41" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -575,7 +574,7 @@ Here is an example:
 <img src="/images/ki.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.4"
+curl -X POST -F "apikey=****" -F "threshold=0.4"
 -F "file=ki.jpg"
 -F "model=5" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -664,7 +663,7 @@ Here is an example:
 <img src="/images/fashion.jpg">
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.4"
+curl -X POST -F "apikey=****" -F "threshold=0.4"
 -F "file=fashion.jpg"
 -F "model=6" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -738,7 +737,7 @@ tags | dict |  Contains name and confidence of the detected clothing item
 Here is an example:  
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.4"
+curl -X POST -F "apikey=****" -F "threshold=0.4"
 -F "file=fashion.jpg"
 -F "model=9" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -833,7 +832,7 @@ Currently two versions are available:
 Here is an example:  
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.4"
+curl -X POST -F "apikey=****" -F "threshold=0.4"
 -F "file=fashion.jpg"
 -F "model=7" -F "lang=de" "https://api.raypack.ai/recog"
 
@@ -905,7 +904,7 @@ vector| list |  Contains vector representation of the processed image
 The process is very similar to the 512 Vector Embedding:  
 
 ```shell
-curl -X POST -F "apikey= " -F "threshold=0.4"
+curl -X POST -F "apikey=****" -F "threshold=0.4"
 -F "file=fashion.jpg"
 -F "model=8" -F "lang=de" "https://api.raypack.ai/recog"
 
