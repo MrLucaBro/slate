@@ -301,18 +301,37 @@ You must replace <code>****</code> with your personal API key.
 <blockquote>
 <p>The call below requests a list of available models and returns it as a JSON:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s1">'apikey= '</span> <span class="s1">'https://api.raypack.ai/getmodels'</span>
-</code></pre>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s1">'apikey=****'</span> <span class="s1">'https://api.raypack.ai/getmodels'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"general"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"Raypack Generall Modell"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"food"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"Raypack Food Modell. Returns JSON Back"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"celeb_us"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"Raypack Celeb US."</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"raypackfacev3"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Face Version 3 Model"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"raypackfacev4"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"41"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Face Version 4 Model (faster then Model 3)"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.025"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"demographics"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Demographics Model"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"clothes"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Clothes Model"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Vector 512"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Vector Model. It can extract 512 or 2048 Vectors"</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Vector 2048"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Vector Model."</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Color"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"9"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Color Model."</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Object"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="s2">"desc"</span><span class="p">:</span><span class="s2">"This is the Raypack Object Model."</span><span class="p">,</span><span class="s2">"parameters"</span><span class="p">:</span><span class="s2">"model=Defines the modelID,language=defines the languages (currently de or en)"</span><span class="p">,</span><span class="s2">"pricing"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>The RAYPACK AI platform offers a number of ready-to-deploy models.
 These models are:</p>
 
 <ol>
-<li>RAYPACK Multi-object Detection</li>
+<li>RAYPACK Multi-Object Detection</li>
+<li>RAYPACK Multi-Object Localization</li>
 <li>RAYPACK Food Detection</li>
 <li>RAYPACK Celebrity Detection US</li>
-<li>RAYPACK Face AI / RAYPACK Face AI v4</li>
+<li>RAYPACK Face AI</li>
+<li>RAYPACK Face AI fast</li>
 <li>RAYPACK Demographics Detection</li>
 <li>RAYPACK Fashion Detection</li>
+<li>RAYPACK Color Model</li>
 </ol>
 
 <p>You can connect with the RAYPACK Platform API by sending http requests to our API server <code>https://api.raypack.ai</code>.
@@ -324,7 +343,7 @@ Here is an example:<br>
 <img src="images/rawpixel-645294-unsplash.jpg"></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span> <span class="se">\</span>
--F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span> <span class="se">\</span>
+-F <span class="s2">"file=@rawpixel-645294-unsplash.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=1"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 </code></pre>
 <blockquote>
@@ -474,7 +493,7 @@ Here is an example:<br>
 <img src="images/rawpixel-645294-unsplash.jpg"></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.5"</span> <span class="se">\</span>
--F <span class="s2">"file=rawpixel-645294-unsplash.jpg"</span> <span class="se">\</span>
+-F <span class="s2">"file=@rawpixel-645294-unsplash.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=10"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -630,8 +649,8 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/burger.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span>
--F <span class="s2">"file=burger.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span> <span class="se">\</span>
+-F <span class="s2">"file=@burger.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=2"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -777,8 +796,8 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/Brad_Pitt_at_Incirlik2.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span>
--F <span class="s2">"file=Brad_Pitt_at_Incirlik2.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.9"</span> <span class="se">\</span>
+-F <span class="s2">"file=@Brad_Pitt_at_Incirlik2.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=3"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -931,9 +950,10 @@ Here is an example:<br>
 <blockquote>
 <p>The call below requests the analysis of the image in url and returns the results as a JSON or JPEG:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span>
--F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"url=https://cvdazzle.com/assets/img/look5r-md.jpg"</span> -F <span class="s2">"model=4"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> <span class="se">\</span>
+-F <span class="s2">"threshold=0.9"</span> -F <span class="s2">"url=https://cvdazzle.com/assets/img/look5r-md.jpg"</span> -F <span class="s2">"model=4"</span> <span class="se">\</span>
 -F <span class="s2">"mode=json"</span> -F <span class="s2">"facemode=default"</span> -F <span class="s2">"hex=00ff00"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
+
 </code></pre>
 <blockquote>
 <p>The above call returns JSON structured like so:</p>
@@ -1139,8 +1159,8 @@ Remember — always use your API-key to validate your http request!
 Here is an example:<br>
 <img src="images/CVD_4.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.5"</span>
--F <span class="s2">"file=CVD_4.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.5"</span> <span class="se">\</span>
+-F <span class="s2">"file=@CVD_4.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=41"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -1312,8 +1332,8 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/ki.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
--F <span class="s2">"file=ki.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span> <span class="se">\</span>
+-F <span class="s2">"file=@ki.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=5"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -1486,8 +1506,8 @@ Here is an example:<br>
 Here is an example:<br>
 <img src="images/fashion.jpg"></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
--F <span class="s2">"file=fashion.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span> <span class="se">\</span>
+-F <span class="s2">"file=@fashion.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=6"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -1629,8 +1649,8 @@ Here is an example:<br>
 <p>The call below requests the analysis of the image given in file and returns a JSON:<br>
 Here is an example:  </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
--F <span class="s2">"file=fashion.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span> <span class="se">\</span>
+-F <span class="s2">"file=@fashion.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=9"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -1792,21 +1812,33 @@ Here is an example:  </p>
 </tr>
 </tbody></table>
 <h1 id='raypack-vector-based-embedding'>RAYPACK Vector-based Embedding</h1>
-<p>In addition to our ready-to-deploy models we offer vector-based encoding of images to facililate your database operations.
-Our models encode images into vectors increasing the speed with which image matching and other operations can be accomplished.
-Currently two versions are available:</p>
+<p>RAYPACK Vector Embedding employs one shot learning logic to rethink the way images are processed with neural networks. Instead of training a network on huge datasets for each  classification purpose we simply compare stored vector representations to each other.
+This workflow makes retraining of the model obsolete, because new images can be simply added to the database in which the representations are stored.</p>
+
+<p>Imagine you would want to create an AI model that recognizes sports stars in an vast archive of video material. With traditional models you would have to create large annotated datasets for each star and even retrain the model if you want to add an additional star. With RAYPACK Vector Embedding however you could simply create a database of vector representations and classify new images based on the difference between their representations and the ones stored in your database. This method greatly increases the efficiency of classifications, while still saving money and time. A typical workflow of detecting the identity of a sports star could look like so:</p>
 
 <ol>
+<li>Extract the regions of the image containing faces with RAYPACK Face AI.</li>
+<li>Convert these regions into vector representations using our RAYPACK Vector Embedding.</li>
+<li>Compare the resulting representations with the representations stored in the database using our vector comparisons.</li>
+<li>Use the results for your classification needs (i.e. Who is in the image?).</li>
+</ol>
+
+<p>The workflow can be used for almost any classification purpose and is easily scalable. All the calls needed can be found in this documentation. You can use our existing object database or start building your own.</p>
+
+<p>Currently two versions are available:</p>
+
+<ul>
 <li>512 Vector Embedding</li>
 <li>2048 Vector Embedding</li>
-</ol>
+</ul>
 <h2 id='raypack-512-vector-embedding'>RAYPACK 512 Vector Embedding</h2>
 <blockquote>
 <p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
 Here is an example:  </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
--F <span class="s2">"file=fashion.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span> <span class="se">\</span>
+-F <span class="s2">"file=@fashion.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=7"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -1948,8 +1980,8 @@ representation produced by the model.</p>
 <p>The call below requests the vectorization of the image given in file and returns a JSON.<br>
 The process is very similar to the 512 Vector Embedding:  </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span>
--F <span class="s2">"file=fashion.jpg"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -F <span class="s2">"apikey=****"</span> -F <span class="s2">"threshold=0.4"</span> <span class="se">\</span>
+-F <span class="s2">"file=@fashion.jpg"</span> <span class="se">\</span>
 -F <span class="s2">"model=8"</span> -F <span class="s2">"lang=de"</span> <span class="s2">"https://api.raypack.ai/recog"</span>
 
 </code></pre>
@@ -1980,7 +2012,7 @@ representation produced by the model.</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still reducing used memory space. This is especially interesting in area of face recognition and identification in large databases.</p>
+<p>The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still being more memory efficient than image storage. These aspects make 2048 vector encoding especially interesting for face recognition in large databases and archives.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p>POST <code>https://api.raypack.ai/recog</code></p>
 <h3 id='query-parameters-11'>Query Parameters</h3>
