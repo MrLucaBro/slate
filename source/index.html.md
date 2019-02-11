@@ -46,18 +46,40 @@ You must replace <code>****</code> with your personal API key.
 > The call below requests a list of available models and returns it as a JSON:
 
 ```shell
-curl -X POST -F 'apikey= ' 'https://api.raypack.ai/getmodels'
+curl -X POST -F 'apikey=****' 'https://api.raypack.ai/getmodels'
+```
+
+```json
+{
+  "response":
+  [
+  {"name":"general","id":"1","desc":"Raypack Generall Modell","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"food","id":"2","desc":"Raypack Food Modell. Returns JSON Back","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"celeb_us","id":"3","desc":"Raypack Celeb US.","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"raypackfacev3","id":"4","desc":"This is the Raypack Face Version 3 Model","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"raypackfacev4","id":"41","desc":"This is the Raypack Face Version 4 Model (faster then Model 3)","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.025"},
+  {"name":"demographics","id":"5","desc":"This is the Raypack Demographics Model","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"clothes","id":"6","desc":"This is the Raypack Clothes Model","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"Vector 512","id":"7","desc":"This is the Raypack Vector Model. It can extract 512 or 2048 Vectors","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"Vector 2048","id":"8","desc":"This is the Raypack Vector Model.","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"Color","id":"9","desc":"This is the Raypack Color Model.","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"},
+  {"name":"Object","id":"10","desc":"This is the Raypack Object Model.","parameters":"model=Defines the modelID,language=defines the languages (currently de or en)","pricing":"0.02"}
+  ]
+}
 ```
 
 The RAYPACK AI platform offers a number of ready-to-deploy models.
 These models are:
 
-1. RAYPACK Multi-object Detection
-2. RAYPACK Food Detection
-3. RAYPACK Celebrity Detection US
-4. RAYPACK Face AI / RAYPACK Face AI v4
-5. RAYPACK Demographics Detection
-6. RAYPACK Fashion Detection
+1. RAYPACK Multi-Object Detection
+2. RAYPACK Multi-Object Localization
+3. RAYPACK Food Detection
+4. RAYPACK Celebrity Detection US
+5. RAYPACK Face AI
+6. RAYPACK Face AI fast
+7. RAYPACK Demographics Detection
+8. RAYPACK Fashion Detection
+9. RAYPACK Color Model
 
 You can connect with the RAYPACK Platform API by sending http requests to our API server `https://api.raypack.ai`.
 You can get an overview over all available models by sending the http request on the right to the endpoint `https://api.raypack.ai/getmodels`. The models themselves are available under the endpoint `https://api.raypack.ai/recog`. In this section, we will give detailed examples of how you can use each of our ready-to-deploy models.
@@ -70,7 +92,7 @@ Here is an example:
 
 ```shell
 curl -X POST -F "apikey=****" -F "threshold=0.9" \
--F "file=rawpixel-645294-unsplash.jpg" \
+-F "file=@rawpixel-645294-unsplash.jpg" \
 -F "model=1" -F "lang=de" "https://api.raypack.ai/recog"
 ```
 
@@ -149,7 +171,7 @@ Here is an example:
 
 ```shell
 curl -X POST -F "apikey=****" -F "threshold=0.5" \
--F "file=rawpixel-645294-unsplash.jpg" \
+-F "file=@rawpixel-645294-unsplash.jpg" \
 -F "model=10" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -231,8 +253,8 @@ Here is an example:
 <img src="/images/burger.jpg">
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.9"
--F "file=burger.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.9" \
+-F "file=@burger.jpg" \
 -F "model=2" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -308,8 +330,8 @@ Here is an example:
 <img src="/images/Brad_Pitt_at_Incirlik2.jpg">
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.9"
--F "file=Brad_Pitt_at_Incirlik2.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.9" \
+-F "file=@Brad_Pitt_at_Incirlik2.jpg" \
 -F "model=3" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -392,9 +414,10 @@ tags | dict |  Contains name and confidence value of the detected celebrity as w
 > The call below requests the analysis of the image in url and returns the results as a JSON or JPEG:
 
 ```shell
-curl -X POST -F "apikey=****"
--F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg" -F "model=4"
+curl -X POST -F "apikey=****" \
+-F "threshold=0.9" -F "url=https://cvdazzle.com/assets/img/look5r-md.jpg" -F "model=4" \
 -F "mode=json" -F "facemode=default" -F "hex=00ff00" "https://api.raypack.ai/recog"
+
 ```
 
 
@@ -490,8 +513,8 @@ Here is an example:
 <img src="/images/CVD_4.jpg">
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.5"
--F "file=CVD_4.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.5" \
+-F "file=@CVD_4.jpg" \
 -F "model=41" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -574,8 +597,8 @@ Here is an example:
 <img src="/images/ki.jpg">
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.4"
--F "file=ki.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.4" \
+-F "file=@ki.jpg" \
 -F "model=5" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -663,8 +686,8 @@ Here is an example:
 <img src="/images/fashion.jpg">
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.4"
--F "file=fashion.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.4" \
+-F "file=@fashion.jpg" \
 -F "model=6" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -737,8 +760,8 @@ tags | dict |  Contains name and confidence of the detected clothing item
 Here is an example:  
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.4"
--F "file=fashion.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.4" \
+-F "file=@fashion.jpg" \
 -F "model=9" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -819,12 +842,22 @@ percent | list | Contains contribution percentage for each color as floats
 
 # RAYPACK Vector-based Embedding
 
-In addition to our ready-to-deploy models we offer vector-based encoding of images to facililate your database operations.
-Our models encode images into vectors increasing the speed with which image matching and other operations can be accomplished.
+RAYPACK Vector Embedding employs one shot learning logic to rethink the way images are processed with neural networks. Instead of training a network on huge datasets for each  classification purpose we simply compare stored vector representations to each other.
+This workflow makes retraining of the model obsolete, because new images can be simply added to the database in which the representations are stored.
+
+Imagine you would want to create an AI model that recognizes sports stars in an vast archive of video material. With traditional models you would have to create large annotated datasets for each star and even retrain the model if you want to add an additional star. With RAYPACK Vector Embedding however you could simply create a database of vector representations and classify new images based on the difference between their representations and the ones stored in your database. This method greatly increases the efficiency of classifications, while still saving money and time. A typical workflow of detecting the identity of a sports star could look like so:
+
+1. Extract the regions of the image containing faces with RAYPACK Face AI.
+2. Convert these regions into vector representations using our RAYPACK Vector Embedding.
+3. Compare the resulting representations with the representations stored in the database using our vector comparisons.
+4. Use the results for your classification needs (i.e. Who is in the image?).
+
+The workflow can be used for almost any classification purpose and is easily scalable. All the calls needed can be found in this documentation. You can use our existing object database or start building your own.
+
 Currently two versions are available:
 
-1. 512 Vector Embedding
-2. 2048 Vector Embedding
+* 512 Vector Embedding
+* 2048 Vector Embedding
 
 ## RAYPACK 512 Vector Embedding
 
@@ -832,8 +865,8 @@ Currently two versions are available:
 Here is an example:  
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.4"
--F "file=fashion.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.4" \
+-F "file=@fashion.jpg" \
 -F "model=7" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -904,8 +937,8 @@ vector| list |  Contains vector representation of the processed image
 The process is very similar to the 512 Vector Embedding:  
 
 ```shell
-curl -X POST -F "apikey=****" -F "threshold=0.4"
--F "file=fashion.jpg"
+curl -X POST -F "apikey=****" -F "threshold=0.4" \
+-F "file=@fashion.jpg" \
 -F "model=8" -F "lang=de" "https://api.raypack.ai/recog"
 
 ```
@@ -936,7 +969,7 @@ representation produced by the model.
 }
 
 ```
-The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still reducing used memory space. This is especially interesting in area of face recognition and identification in large databases.
+The RAYPACK 2048 Vector Embedding returns a more detailed representation of the given image, compared to the 512 Vector Embedding. It enables highly accurate and fast image operations, while still being more memory efficient than image storage. These aspects make 2048 vector encoding especially interesting for face recognition in large databases and archives.
 
 ### HTTP Request
 
